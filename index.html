@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-                        <p>At Palm Travels, we believe that travel is not just about visiting new places, but about creating lasting memories and transformative experiences. Our team of experienced travel professionals is dedicated to crafting personalized itineraries that showcase the incredible diversity and beauty of India, catering to your unique preferences and budget.</p>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the World with Us - Professional Tours and Travels Agency offering amazing travel packages, destinations, and unforgettable experiences.">
+    <meta name="keywords" content="tours, travels, vacation, holiday packages, destinations, travel agency">
+    <title>Palm Travels - Explore the World with Us</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Palm Travels</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#destinations" class="nav-link">Destinations</a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/packages.html" class="nav-link">Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="hero-slide active" style="background-image: url('images/destinations/goa-beach.avif')"></div>
+            <div class="hero-slide" style="background-image: url('images/homepage/package-2.webp')"></div>
+            <div class="hero-slide" style="background-image: url('images/destinations/manali-mountains.avif')"></div>
+            <div class="hero-slide" style="background-image: url('images/homepage/package-3.jpg')"></div>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Explore the World with Us</h1>
+            <p class="hero-subtitle">Discover amazing destinations and create unforgettable memories with our expertly crafted travel packages</p>
+            <button class="cta-button" onclick="scrollToSection('packages')">Book Now</button>
+        </div>
+        <div class="hero-navigation">
+            <div class="hero-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Us</h2>
+                <p>Your trusted travel partner for extraordinary adventures</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Creating Memorable Journeys Since 2010</h3>
+                    <p>At Palm Travels, we believe that travel is not just about visiting new places, but about creating lasting memories and transformative experiences. Our team of experienced travel professionals is dedicated to crafting personalized itineraries that cater to your unique preferences and budget.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h4>5000+</h4>
+                            <p>Happy Travelers</p>
+                        </div>
+                        <div class="stat">
+                            <h4>28+</h4>
+                            <p>Indian States</p>
+                        </div>
+                        <div class="stat">
+                            <h4>15+</h4>
+                            <p>Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop" alt="About Palm Travels" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Destinations -->
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Destinations</h2>
+                <p>Discover the world's most beautiful places</p>
+            </div>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <img src="images/destinations/goa-beach.avif" alt="Goa, India">
+                    <div class="destination-info">
+                        <h3>Goa, India</h3>
+                        <p>Pristine beaches, vibrant nightlife and Portuguese heritage</p>
+                        <span class="price">Starting from ₹8,999</span>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="images/destinations/udaipur-palace.png" alt="Udaipur, Rajasthan">
+                    <div class="destination-info">
+                        <h3>Udaipur, Rajasthan</h3>
+                        <p>City of Lakes with magnificent palaces and royal heritage</p>
+                        <span class="price">Starting from ₹12,999</span>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="images/destinations/manali-mountains.avif" alt="Manali, Himachal Pradesh">
+                    <div class="destination-info">
+                        <h3>Manali, Himachal Pradesh</h3>
+                        <p>Snow-capped mountains, adventure sports and scenic valleys</p>
+                        <span class="price">Starting from ₹15,999</span>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="images/destinations/gokarna-temple.png" alt="Gokarna, Karnataka">
+                    <div class="destination-info">
+                        <h3>Gokarna, Karnataka</h3>
+                        <p>Serene beaches, ancient temples and laid-back coastal vibes</p>
+                        <span class="price">Starting from ₹6,999</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Packages -->
+    <section id="packages" class="packages">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Travel Packages</h2>
+                <p>Carefully curated packages for every type of traveler</p>
+            </div>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <img src="images\homepage\package-1.jpg" alt="Kerala Backwaters">
+                    <div class="package-info">
+                        <div class="package-category">Romantic</div>
+                        <h3>Kerala Backwaters</h3>
+                        <p>Perfect honeymoon getaway through serene backwaters, hill stations, and spice gardens of God's Own Country.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-calendar"></i> 6 Days</span>
+                            <span><i class="fas fa-users"></i> 2 People</span>
+                            <span><i class="fas fa-star"></i> 4 Star</span>
+                        </div>
+                        <div class="package-price">₹24,999</div>
+                        <button class="package-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <img src="images\homepage\package-2.webp" alt="Rajasthan Royal Heritage">
+                    <div class="package-info">
+                        <div class="package-category">Family</div>
+                        <h3>Rajasthan Royal Heritage</h3>
+                        <p>Explore the royal palaces, forts, and rich culture of Jaipur, Udaipur, and Jodhpur with your family.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-calendar"></i> 8 Days</span>
+                            <span><i class="fas fa-users"></i> 4 People</span>
+                            <span><i class="fas fa-star"></i> 4 Star</span>
+                        </div>
+                        <div class="package-price">₹39,999</div>
+                        <button class="package-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <img src="images\homepage\package-3.jpg" alt="Himachal Adventure Trek">
+                    <div class="package-info">
+                        <div class="package-category">Adventure</div>
+                        <h3>Himachal Adventure Trek</h3>
+                        <p>Thrilling adventure through Manali, Solang Valley, and Rohtang Pass with trekking and mountain sports.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-calendar"></i> 7 Days</span>
+                            <span><i class="fas fa-users"></i> 1 Person</span>
+                            <span><i class="fas fa-star"></i> 3 Star</span>
+                        </div>
+                        <div class="package-price">₹18,999</div>
+                        <button class="package-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="packages-cta">
+                <button class="explore-more-btn" onclick="window.location.href='pages/packages.html'">
+                    <i class="fas fa-compass"></i>
+                    Explore More Packages
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Palm Travels</h2>
+                <p>Experience the difference with our exceptional service</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Safe & Secure</h3>
+                    <p>Your safety is our priority. We ensure secure bookings and safe travel experiences.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Best Prices</h3>
+                    <p>Competitive pricing with no hidden costs. Get the best value for your money.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support to assist you before, during, and after your trip.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Expert Guides</h3>
+                    <p>Professional local guides who know the destinations inside and out.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Travelers Say</h2>
+                <p>Real experiences from our happy customers</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Palm Travels made our honeymoon absolutely perfect! Every detail was carefully planned and executed. Highly recommended!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="images\testimonials\harsh.png" alt="Harsh Jain">
+                        <div class="author-info">
+                            <h4>Harsh Jain</h4>
+                            <span>Newlywed Couple</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Amazing family vacation! The kids loved every moment, and the accommodations were top-notch. Will definitely book again!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="images\testimonials\aarsh.jpg" alt="Aarsh Sharma">
+                        <div class="author-info">
+                            <h4>Aarsh Sharma</h4>
+                            <span>Family Traveler</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Solo travel can be daunting, but Palm Travels made it safe and enjoyable. Great guides and perfect itinerary!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="images\testimonials\tejas.png" alt="Tejas Bhoirekar">
+                        <div class="author-info">
+                            <h4>Tejas Bhoirekar</h4>
+                            <span>Solo Explorer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated with Travel Deals</h2>
+                <p>Subscribe to our newsletter and get exclusive offers and travel tips delivered to your inbox</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Palm Travels</h3>
+                    <p>Your trusted travel partner for extraordinary adventures around the world.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="pages/packages.html">Packages</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Destinations</h4>
+                    <ul>
+                        <li><a href="#">North India</a></li>
+                        <li><a href="#">South India</a></li>
+                        <li><a href="#">Western Ghats</a></li>
+                        <li><a href="#">Himalayas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +91 9372495692</p>
+                        <p><i class="fas fa-envelope"></i> info@palmtravels.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i>Mumbai, India</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Palm Travels. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

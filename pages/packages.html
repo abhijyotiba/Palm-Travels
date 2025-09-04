@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse all travel packages offered by Palm Travels. Find the perfect vacation package for your next adventure.">
+    <title>All Packages - Palm Travels</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/packages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="../index.html">Palm Travels</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#destinations" class="nav-link">Destinations</a>
+                </li>
+                <li class="nav-item">
+                    <a href="packages.html" class="nav-link active">Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="packages-hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Travel Packages</h1>
+            <p>Discover amazing destinations with our carefully curated travel packages</p>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-wrapper">
+                <div class="filter-group">
+                    <label>Category:</label>
+                    <select id="category-filter" onchange="filterByCategory(this.value)">
+                        <option value="all">All Categories</option>
+                        <option value="romantic">Romantic</option>
+                        <option value="family">Family</option>
+                        <option value="solo">Solo</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="luxury">Luxury</option>
+                        <option value="budget">Budget</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Duration:</label>
+                    <select id="duration-filter" onchange="filterByDuration(this.value)">
+                        <option value="all">All Durations</option>
+                        <option value="short">1-5 Days</option>
+                        <option value="medium">6-10 Days</option>
+                        <option value="long">11+ Days</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Price Range:</label>
+                    <div class="price-range">
+                        <input type="range" id="price-range" min="500" max="5000" value="5000" step="100">
+                        <span id="price-output">$5000</span>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <button class="clear-filters" onclick="clearAllFilters()">Clear Filters</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Grid -->
+    <section class="all-packages">
+        <div class="container">
+            <div class="packages-grid" id="packages-container">
+                <!-- Romantic Packages -->
+                <div class="package-card" data-category="romantic" data-duration="6" data-price="24999">
+                    <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&h=250&fit=crop" alt="Kerala Backwaters Romance">
+                    <div class="package-info">
+                        <div class="package-category">Romantic</div>
+                        <h3>Kerala Backwaters Romance</h3>
+                        <p>Experience romance in God's Own Country with houseboat stays, spice plantations, and serene backwaters perfect for couples.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-calendar"></i> 6 Days</span>
+                            <span><i class="fas fa-users"></i> 2 People</span>
+                            <span><i class="fas fa-star"></i> 4 Star</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Kerala, India</span>
+                        </div>
+                        <div class="package-highlights">
+                            <ul>
+                                <li>Luxury Houseboat Stay</li>
+                                <li>Munnar Hill Station</li>
+                                <li>Spice Garden Tours</li>
+                                <li>Ayurvedic Couple Spa</li>
+                            </ul>
+                        </div>
+                        <div class="package-price">₹24,999</div>
+                        <button class="package-btn" onclick="openPackageDetails('kerala-romance')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="package-card" data-category="romantic" data-duration="5" data-price="18999">
+                    <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400&h=250&fit=crop" alt="Goa Beach Romance">
+                    <div class="package-info">
+                        <div class="package-category">Romantic</div>
+                        <h3>Goa Beach Romance</h3>
+                        <p>Romantic beach getaway with luxury resorts, sunset cruises, and vibrant nightlife in India's party capital.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-calendar"></i> 5 Days</span>
+                            <span><i class="fas fa-users"></i> 2 People</span>
+                            <span><i class="fas fa-star"></i> 5 Star</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Goa, India</span>
+                        </div>
+                        <div class="package-highlights">
+                            <ul>
+                                <li>Beach Resort Stay</li>
+                                <li>Sunset Cruise</li>
+                                <li>Water Sports</li>
+                                <li>Candlelight Dinners</li>
+                            </ul>
+                        </div>
+                        <div class="package-price">₹18,999</div>
+                        <button class="package-btn" onclick="openPackageDetails('goa-romance')">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Family Packages -->
+                <div class="package-card" data-category="family" data-duration="8" data-price="39999">
+                    <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=400&h=250&fit=crop" alt="Golden Triangle Family Tour">
+                    <div class="package-info">
+                        <div class="package-category">Family</div>
+                        <h3>Golden Triangle Family Tour</h3>
+                        <p>Explore India's rich heritage with family through Delhi, Agra, and Jaipur including the magnificent Taj Mahal.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-calendar"></i> 8 Days</span>
+                            <span><i class="fas fa-users"></i> 4 People</span>
+                            <span><i class="fas fa-star"></i> 4 Star</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Delhi-Agra-Jaipur</span>
+                        </div>
+                        <div class="package-highlights">
+                            <ul>
+                                <li>Taj Mahal Sunrise Visit</li>
+                                <li>Red Fort & India Gate</li>
+                                <li>Amber Palace Jaipur</li>
+                                <li>Cultural Shows</li>
+                            </ul>
+                        </div>
+                        <div class="package-price">₹39,999</div>
+                        <button class="package-btn" onclick="openPackageDetails('golden-triangle')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="package-card" data-category="family" data-duration="7" data-price="32999">
+                    <img src="https://images.unsplash.com/photo-1599661046827-dacde7c9120a?w=400&h=250&fit=crop" alt="Rajasthan Royal Family">
+                    <div class="package-info">
+                        <div class="package-category">Family</div>
+                        <h3>Rajasthan Royal Family</h3>
+                        <p>Live like royalty with your family exploring magnificent palaces, forts, and desert landscapes of Rajasthan.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-calendar"></i> 7 Days</span>
+                            <span><i class="fas fa-users"></i> 4 People</span>
+                            <span><i class="fas fa-star"></i> 5 Star</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Udaipur-Jodhpur-Jaisalmer</span>
+                        </div>
+                        <div class="package-highlights">
+                            <ul>
+                                <li>Palace Hotel Stays</li>
+                                <li>Desert Safari</li>
+                                <li>Camel Rides</li>
+                                <li>Folk Dance Shows</li>
+                            </ul>
+                        </div>
+                        <div class="package-price">₹32,999</div>
+                        <button class="package-btn" onclick="openPackageDetails('rajasthan-royal')">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Solo Packages -->
+                <div class="package-card" data-category="solo" data-duration="10" data-price="22999">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=250&fit=crop" alt="Himachal Solo Trek">
+                    <div class="package-info">
+                        <div class="package-category">Solo</div>
+                        <h3>Himachal Solo Adventure</h3>
+                        <p>Perfect solo journey through the mountains of Himachal with trekking, adventure sports, and serene landscapes.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-calendar"></i> 10 Days</span>
+                            <span><i class="fas fa-users"></i> 1 Person</span>
+                            <span><i class="fas fa-star"></i> 3 Star</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Manali-Kasol-Dharamshala</span>
+                        </div>
+                        <div class="package-highlights">
+                            <ul>
+                                <li>Trekking Adventures</li>
+                                <li>Paragliding</li>
+                                <li>Mountain Biking</li>
+                                <li>Cafe Culture</li>
+                            </ul>
+                        </div>
+                        <div class="package-price">₹22,999</div>
+                        <button class="package-btn" onclick="openPackageDetails('himachal-solo')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="package-card" data-category="solo" data-duration="8" data-price="16999">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=250&fit=crop" alt="Gokarna Beach Solo">
+                    <div class="package-info">
+                        <div class="package-category">Solo</div>
+                        <h3>Gokarna Beach Solo</h3>
+                        <p>Peaceful solo retreat at pristine beaches of Gokarna with yoga, meditation, and spiritual experiences.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-calendar"></i> 8 Days</span>
+                            <span><i class="fas fa-users"></i> 1 Person</span>
+                            <span><i class="fas fa-star"></i> 3 Star</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Gokarna, Karnataka</span>
+                        </div>
+                        <div class="package-highlights">
+                            <ul>
+                                <li>Beach Yoga Sessions</li>
+                                <li>Temple Visits</li>
+                                <li>Beach Hopping</li>
+                                <li>Local Cuisine</li>
+                            </ul>
+                        </div>
+                        <div class="package-price">₹16,999</div>
+                        <button class="package-btn" onclick="openPackageDetails('gokarna-solo')">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Adventure Packages -->
+                <div class="package-card" data-category="adventure" data-duration="12" data-price="45999">
+                    <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?w=400&h=250&fit=crop" alt="Ladakh Bike Expedition">
+                    <div class="package-info">
+                        <div class="package-category">Adventure</div>
+                        <h3>Ladakh Bike Expedition</h3>
+                        <p>Ultimate adventure through the high-altitude desert of Ladakh with challenging mountain passes and breathtaking landscapes.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-calendar"></i> 12 Days</span>
+                            <span><i class="fas fa-users"></i> 6 People</span>
+                            <span><i class="fas fa-star"></i> 3 Star</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Leh-Ladakh</span>
+                        </div>
+                        <div class="package-highlights">
+                            <ul>
+                                <li>Royal Enfield Bikes</li>
+                                <li>Khardung La Pass</li>
+                                <li>Pangong Tso Lake</li>
+                                <li>Nubra Valley</li>
+                            </ul>
+                        </div>
+                        <div class="package-price">₹45,999</div>
+                        <button class="package-btn" onclick="openPackageDetails('ladakh-expedition')">View Details</button>
+                    </div>
+                </div>
+
+                <div class="package-card" data-category="adventure" data-duration="9" data-price="28999">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=250&fit=crop" alt="Rishikesh Adventure">
+                    <div class="package-info">
+                        <div class="package-category">Adventure</div>
+                        <h3>Rishikesh Adventure Camp</h3>
+                        <p>Thrilling adventure activities in the yoga capital of the world including river rafting, bungee jumping, and trekking.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-calendar"></i> 9 Days</span>
+                            <span><i class="fas fa-users"></i> 8 People</span>
+                            <span><i class="fas fa-star"></i> 3 Star</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Rishikesh, Uttarakhand</span>
+                        </div>
+                        <div class="package-highlights">
+                            <ul>
+                                <li>White Water Rafting</li>
+                                <li>Bungee Jumping</li>
+                                <li>Rock Climbing</li>
+                                <li>Yoga Sessions</li>
+                            </ul>
+                        </div>
+                        <div class="package-price">₹28,999</div>
+                        <button class="package-btn" onclick="openPackageDetails('rishikesh-adventure')">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Luxury Packages -->
+                <div class="package-card" data-category="luxury" data-duration="7" data-price="89999">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=250&fit=crop" alt="Palace on Wheels Luxury">
+                    <div class="package-info">
+                        <div class="package-category">Luxury</div>
+                        <h3>Palace on Wheels Luxury</h3>
+                        <p>Ultimate luxury train journey through Rajasthan's royal cities with five-star accommodation and royal treatment.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-calendar"></i> 7 Days</span>
+                            <span><i class="fas fa-users"></i> 2 People</span>
+                            <span><i class="fas fa-star"></i> 5 Star</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Rajasthan Circuit</span>
+                        </div>
+                        <div class="package-highlights">
+                            <ul>
+                                <li>Luxury Train Journey</li>
+                                <li>Royal Suite Cabins</li>
+                                <li>Palace Visits</li>
+                                <li>Gourmet Dining</li>
+                            </ul>
+                        </div>
+                        <div class="package-price">₹89,999</div>
+                        <button class="package-btn" onclick="openPackageDetails('palace-wheels')">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Budget Packages -->
+                <div class="package-card" data-category="budget" data-duration="6" data-price="8999">
+                    <img src="https://images.unsplash.com/photo-1527004760525-a2e7b2c68d89?w=400&h=250&fit=crop" alt="Backpacker Himachal">
+                    <div class="package-info">
+                        <div class="package-category">Budget</div>
+                        <h3>Backpacker Himachal</h3>
+                        <p>Budget-friendly mountain adventure through Himachal Pradesh with hostels, local transport, and authentic experiences.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-calendar"></i> 6 Days</span>
+                            <span><i class="fas fa-users"></i> 2 People</span>
+                            <span><i class="fas fa-star"></i> 2 Star</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Kasol-Tosh-Malana</span>
+                        </div>
+                        <div class="package-highlights">
+                            <ul>
+                                <li>Backpacker Hostels</li>
+                                <li>Local Bus Travel</li>
+                                <li>Village Walks</li>
+                                <li>Street Food Tours</li>
+                            </ul>
+                        </div>
+                        <div class="package-price">₹8,999</div>
+                        <button class="package-btn" onclick="openPackageDetails('himachal-budget')">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button class="load-more-btn" onclick="loadMorePackages()">Load More Packages</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="packages-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Can't Find What You're Looking For?</h2>
+                <p>We create custom travel packages tailored to your preferences and budget</p>
+                <button class="cta-button" onclick="window.location.href='contact.html'">Contact Us for Custom Package</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Palm Travels</h3>
+                    <p>Your trusted travel partner for extraordinary adventures around the world.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html#about">About Us</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Destinations</h4>
+                    <ul>
+                        <li><a href="#">Asia</a></li>
+                        <li><a href="#">Europe</a></li>
+                        <li><a href="#">America</a></li>
+                        <li><a href="#">Africa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@palmtravels.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Travel Street, City, State 12345</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Palm Travels. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/packages.js"></script>
+</body>
+</html>
