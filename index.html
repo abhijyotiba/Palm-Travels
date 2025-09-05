@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-                        <p>At Palm Travels, we believe that travel is not just about visiting new places, but about creating lasting memories and transformative experiences. Our team of experienced travel professionals is dedicated to crafting personalized itineraries that showcase the incredible diversity and beauty of India, catering to your unique preferences and budget.</p>">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Explore the World with Us - Professional Tours and Travels Agency offering amazing travel packages, destinations, and unforgettable experiences.">
     <meta name="keywords" content="tours, travels, vacation, holiday packages, destinations, travel agency">
@@ -29,6 +29,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="pages/packages.html" class="nav-link">Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/gallery.html" class="nav-link">Gallery</a>
                 </li>
                 <li class="nav-item">
                     <a href="pages/contact.html" class="nav-link">Contact</a>
@@ -246,6 +249,67 @@
         </div>
     </section>
 
+    <!-- Photo Gallery -->
+    <section class="photo-gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Travel Memories</h2>
+                <p>Moments captured from our amazing journeys around the world</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-caption="Sunset at Goa Beach">
+                    <img src="images/destinations/goa-beach.avif" alt="Beautiful sunset at Goa Beach" loading="lazy">
+                    <div class="gallery-caption">Sunset at Goa Beach</div>
+                </div>
+                <div class="gallery-item" data-caption="Majestic Udaipur Palace">
+                    <img src="images/destinations/udaipur-palace.png" alt="Stunning Udaipur Palace architecture" loading="lazy">
+                    <div class="gallery-caption">Majestic Udaipur Palace</div>
+                </div>
+                <div class="gallery-item" data-caption="Snow-capped Manali Mountains">
+                    <img src="images/destinations/manali-mountains.avif" alt="Breathtaking view of Manali mountains" loading="lazy">
+                    <div class="gallery-caption">Snow-capped Manali Mountains</div>
+                </div>
+                <div class="gallery-item" data-caption="Serene Gokarna Temple">
+                    <img src="images/destinations/gokarna-temple.png" alt="Peaceful Gokarna temple by the sea" loading="lazy">
+                    <div class="gallery-caption">Serene Gokarna Temple</div>
+                </div>
+                <div class="gallery-item" data-caption="Kerala Backwater Journey">
+                    <img src="images/homepage/package-1.jpg" alt="Peaceful Kerala backwater cruise" loading="lazy">
+                    <div class="gallery-caption">Kerala Backwater Journey</div>
+                </div>
+                <div class="gallery-item" data-caption="Royal Rajasthan Experience">
+                    <img src="images/homepage/package-2.webp" alt="Historic Rajasthan palace and culture" loading="lazy">
+                    <div class="gallery-caption">Royal Rajasthan Experience</div>
+                </div>
+                <div class="gallery-item" data-caption="Himalayan Adventure Trek">
+                    <img src="images/homepage/package-3.jpg" alt="Exciting Himalayan trekking adventure" loading="lazy">
+                    <div class="gallery-caption">Himalayan Adventure Trek</div>
+                </div>
+                <div class="gallery-item" data-caption="Happy Travelers">
+                    <img src="images/testimonials/harsh.png" alt="Satisfied customers enjoying their trip" loading="lazy">
+                    <div class="gallery-caption">Happy Travelers</div>
+                </div>
+                <div class="gallery-item" data-caption="Family Fun Moments">
+                    <img src="images/testimonials/aarsh.jpg" alt="Family enjoying their vacation together" loading="lazy">
+                    <div class="gallery-caption">Family Fun Moments</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img id="lightbox-image" src="" alt="">
+            <div id="lightbox-caption"></div>
+            <div class="lightbox-nav">
+                <button id="lightbox-prev" class="lightbox-btn">&lt;</button>
+                <button id="lightbox-next" class="lightbox-btn">&gt;</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Testimonials -->
     <section class="testimonials">
         <div class="container">
@@ -377,5 +441,6 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>

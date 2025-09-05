@@ -17,14 +17,15 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)),
+    background: linear-gradient(135deg, var(--primary-color), var(--baby-pink)),
                 url('https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?w=1920&h=1080&fit=crop') center/cover no-repeat;
-    background-image: linear-gradient(135deg, var(--primary-color), var(--secondary-color)),
+    background-image: linear-gradient(135deg, var(--primary-color), var(--baby-pink)),
                       url('https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?w=1920&h=1080&fit=crop'),
                       url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff15" points="0,0 1000,250 1000,1000 0,750"/><polygon fill="%23ffffff08" points="0,250 1000,0 1000,500 0,750"/></svg>');
 }
 
 .contact-hero h1 {
+    font-family: 'Prestigious Regular', serif;
     font-size: 2.8rem;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -55,23 +56,66 @@
     padding: 3rem;
     border-radius: 15px;
     box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-form-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--baby-pink));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 15px;
+}
+
+.contact-form-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.contact-form-section:hover::before {
+    opacity: 0.02;
 }
 
 .contact-form-section h2 {
+    font-family: 'Prestigious Regular', serif;
     color: var(--text-dark);
     font-size: 2rem;
     margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-form-section:hover h2 {
+    color: var(--primary-color);
+    transform: translateX(5px);
 }
 
 .contact-form-section > p {
     color: var(--text-light);
     margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-form-section:hover > p {
+    color: var(--text-dark);
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 .form-row {
@@ -90,6 +134,12 @@
     color: var(--text-dark);
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-group:hover label {
+    color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
 .form-group input,
@@ -100,8 +150,9 @@
     border-radius: 8px;
     font-size: 1rem;
     font-family: inherit;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .form-group input:focus,
@@ -109,7 +160,15 @@
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
+    box-shadow: 0 0 0 3px rgba(212, 175, 140, 0.15);
+    transform: translateY(-2px);
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .form-group textarea {
@@ -130,6 +189,12 @@
     cursor: pointer;
     font-size: 0.95rem;
     line-height: 1.4;
+    transition: all 0.3s ease;
+}
+
+.checkbox-label:hover {
+    color: var(--primary-color);
+    transform: translateX(3px);
 }
 
 .checkbox-label input[type="checkbox"] {
@@ -142,11 +207,19 @@
     cursor: pointer;
     margin: 0;
     flex-shrink: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.checkbox-label input[type="checkbox"]:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(212, 175, 140, 0.3);
 }
 
 .checkbox-label input[type="checkbox"]:checked {
     background: var(--primary-color);
     border-color: var(--primary-color);
+    transform: scale(1.1);
 }
 
 .checkbox-label input[type="checkbox"]:checked::after {
@@ -161,30 +234,47 @@
 }
 
 .submit-btn {
-    background: var(--primary-color);
-    color: white;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-dark);
     border: none;
     padding: 15px 30px;
     border-radius: 8px;
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     margin-top: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
 }
 
 .submit-btn:hover {
-    background: #006666;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 128, 128, 0.3);
+    background: linear-gradient(45deg, var(--baby-pink), var(--primary-color));
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(212, 175, 140, 0.4);
+}
+
+.submit-btn:hover::before {
+    left: 100%;
 }
 
 .submit-btn:active {
-    transform: translateY(0);
+    transform: translateY(-2px);
 }
 
 /* Contact Info Section */
@@ -195,14 +285,26 @@
 }
 
 .contact-info-section h2 {
+    font-family: 'Prestigious Regular', serif;
     color: var(--text-dark);
     font-size: 2rem;
     margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.contact-info-section:hover h2 {
+    color: var(--primary-color);
+    transform: scale(1.02);
 }
 
 .contact-info-section > p {
     color: var(--text-light);
     margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.contact-info-section:hover > p {
+    color: var(--text-dark);
 }
 
 .contact-info-grid {
@@ -215,33 +317,68 @@
     display: flex;
     gap: 1rem;
     align-items: flex-start;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+
+.contact-info-item:hover {
+    background: rgba(212, 175, 140, 0.1);
+    border-color: var(--primary-color);
+    transform: translateX(10px);
 }
 
 .contact-icon {
     width: 50px;
     height: 50px;
-    background: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(212, 175, 140, 0.3);
+}
+
+.contact-info-item:hover .contact-icon {
+    background: linear-gradient(135deg, var(--baby-pink), var(--secondary-color));
+    transform: rotateY(180deg) scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 182, 193, 0.4);
 }
 
 .contact-icon i {
     color: white;
     font-size: 1.2rem;
+    transition: all 0.4s ease;
+}
+
+.contact-info-item:hover .contact-icon i {
+    transform: rotateY(180deg) scale(1.2);
 }
 
 .contact-details h3 {
     color: var(--text-dark);
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.contact-info-item:hover .contact-details h3 {
+    color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
 .contact-details p {
     color: var(--text-light);
     line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+.contact-info-item:hover .contact-details p {
+    color: var(--text-dark);
+    transform: translateY(-1px);
 }
 
 /* WhatsApp Section */
@@ -251,41 +388,106 @@
     border-radius: 15px;
     box-shadow: var(--shadow);
     text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.whatsapp-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 15px;
+}
+
+.whatsapp-section:hover {
+    transform: translateY(-5px);
+    border-color: #25d366;
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.2);
+}
+
+.whatsapp-section:hover::before {
+    opacity: 0.03;
 }
 
 .whatsapp-section h3 {
     color: var(--text-dark);
     margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.whatsapp-section:hover h3 {
+    color: #25d366;
+    transform: scale(1.05);
 }
 
 .whatsapp-section p {
     color: var(--text-light);
     margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.whatsapp-section:hover p {
+    color: var(--text-dark);
 }
 
 .whatsapp-btn {
-    background: #25d366;
+    background: linear-gradient(45deg, #25d366, #128c7e);
     color: white;
     border: none;
     padding: 12px 25px;
     border-radius: 25px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 1rem;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.whatsapp-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
 }
 
 .whatsapp-btn:hover {
-    background: #128c7e;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+    background: linear-gradient(45deg, #128c7e, #25d366);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-btn:hover::before {
+    left: 100%;
 }
 
 .whatsapp-btn i {
     font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn:hover i {
+    transform: scale(1.2) rotate(15deg);
 }
 
 /* Social Section */
@@ -319,7 +521,7 @@
 }
 
 .social-section .social-links a:hover {
-    background: var(--secondary-color);
+    background: var(--baby-pink);
     transform: translateY(-3px);
 }
 
@@ -330,6 +532,7 @@
 }
 
 .map-section h2 {
+    font-family: 'Prestigious Regular', serif;
     text-align: center;
     color: var(--text-dark);
     font-size: 2.2rem;
@@ -401,6 +604,14 @@
     border-radius: 10px;
     overflow: hidden;
     box-shadow: var(--shadow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+}
+
+.faq-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
 }
 
 .faq-question {
@@ -416,26 +627,52 @@
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-dark);
-    transition: background 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.faq-question::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--baby-pink));
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .faq-question:hover {
-    background: var(--background-light);
+    background: rgba(212, 175, 140, 0.1);
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.faq-question:hover::before {
+    width: 100%;
 }
 
 .faq-question i {
     color: var(--primary-color);
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.2rem;
 }
 
 .faq-question.active i {
-    transform: rotate(180deg);
+    transform: rotate(180deg) scale(1.2);
+    color: var(--baby-pink);
+}
+
+.faq-question:hover i {
+    color: var(--baby-pink);
+    transform: scale(1.2);
 }
 
 .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(212, 175, 140, 0.05);
 }
 
 .faq-answer.active {
@@ -447,6 +684,15 @@
     color: var(--text-light);
     line-height: 1.6;
     margin: 0;
+    transition: all 0.3s ease;
+    transform: translateY(-10px);
+    opacity: 0;
+}
+
+.faq-answer.active p {
+    transform: translateY(0);
+    opacity: 1;
+    color: var(--text-dark);
 }
 
 /* Form Validation Styles */

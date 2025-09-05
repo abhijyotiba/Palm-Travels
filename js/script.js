@@ -452,5 +452,104 @@ function filterPackagesByPrice(maxPrice) {
     });
 }
 
+// Photo Gallery Lightbox Functionality
+let currentImageIndex = 0;
+let galleryImages = [];
+
+function initPhotoGallery() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const closeBtn = document.querySelector('.lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+
+    if (!lightbox) return;
+
+    // Populate gallery images array
+    galleryImages = Array.from(galleryItems).map(item => ({
+        src: item.querySelector('img').src,
+        alt: item.querySelector('img').alt,
+        caption: item.dataset.caption || item.querySelector('.gallery-caption')?.textContent || ''
+    }));
+
+    // Add click event to gallery items
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            currentImageIndex = index;
+            openLightbox();
+        });
+    });
+
+    // Close lightbox events
+    closeBtn?.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    // Navigation events
+    prevBtn?.addEventListener('click', showPrevImage);
+    nextBtn?.addEventListener('click', showNextImage);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.classList.contains('active')) {
+            switch(e.key) {
+                case 'Escape':
+                    closeLightbox();
+                    break;
+                case 'ArrowLeft':
+                    showPrevImage();
+                    break;
+                case 'ArrowRight':
+                    showNextImage();
+                    break;
+            }
+        }
+    });
+
+    function openLightbox() {
+        const currentImage = galleryImages[currentImageIndex];
+        lightboxImage.src = currentImage.src;
+        lightboxImage.alt = currentImage.alt;
+        lightboxCaption.textContent = currentImage.caption;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    function showPrevImage() {
+        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateLightboxImage();
+    }
+
+    function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+        updateLightboxImage();
+    }
+
+    function updateLightboxImage() {
+        const currentImage = galleryImages[currentImageIndex];
+        lightboxImage.style.opacity = '0';
+        
+        setTimeout(() => {
+            lightboxImage.src = currentImage.src;
+            lightboxImage.alt = currentImage.alt;
+            lightboxCaption.textContent = currentImage.caption;
+            lightboxImage.style.opacity = '1';
+        }, 150);
+    }
+}
+
 // Initialize price slider on packages page
-document.addEventListener('DOMContentLoaded', initPriceSlider);
+document.addEventListener('DOMContentLoaded', function() {
+    initPriceSlider();
+    initPhotoGallery();
+});

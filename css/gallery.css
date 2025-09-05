@@ -1,0 +1,398 @@
+/* Gallery Page Specific Styles */
+
+.nav-logo a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.nav-link.active {
+    color: var(--primary-color);
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Gallery Hero */
+.gallery-hero {
+    height: 60vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-top: 80px;
+}
+
+.gallery-hero .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)),
+                url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&h=1080&fit=crop') center/cover no-repeat;
+    background-blend-mode: overlay;
+}
+
+.gallery-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.gallery-hero h1 {
+    font-family: 'Prestigious Regular', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.gallery-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+}
+
+/* Gallery Filters */
+.gallery-filters {
+    padding: 2rem 0;
+    background: white;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 80px;
+    z-index: 100;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Main Gallery - Improved Grid Layout */
+.main-gallery {
+    padding: 3rem 0;
+    background: var(--background-light);
+}
+
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    align-items: start;
+}
+
+/* Gallery page specific styles with higher specificity */
+.main-gallery .masonry-grid .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+    width: 100%;
+}
+
+.main-gallery .masonry-grid .gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    border-radius: 15px;
+}
+
+.main-gallery .masonry-grid .gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.main-gallery .masonry-grid .gallery-item:hover::before {
+    opacity: 0.08;
+}
+
+.main-gallery .masonry-grid .gallery-item img {
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    max-height: 400px;
+    object-fit: cover;
+    display: block;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-gallery .masonry-grid .gallery-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1) contrast(1.05) saturate(1.1);
+}
+
+.main-gallery .masonry-grid .gallery-item .gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    color: white;
+    padding: 2.5rem 1.2rem 1.2rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: 2;
+}
+
+.main-gallery .masonry-grid .gallery-item:hover .gallery-caption {
+    transform: translateY(0);
+}
+
+/* Filter Animation */
+.gallery-item.hidden {
+    display: none;
+}
+
+.gallery-item.fade-in {
+    animation: fadeInScale 0.6s ease;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Load More Button */
+.load-more-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.load-more-btn {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.load-more-btn:hover {
+    background: #e55a2b;
+    transform: translateY(-2px);
+}
+
+.load-more-btn i {
+    font-size: 1.1rem;
+}
+
+/* Enhanced Lightbox for Gallery Page */
+.lightbox {
+    backdrop-filter: blur(10px);
+}
+
+.lightbox-content {
+    animation: lightboxZoomIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes lightboxZoomIn {
+    from {
+        transform: scale(0.7) rotate(3deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design for Gallery Page */
+@media (max-width: 768px) {
+    .gallery-hero {
+        height: 50vh;
+        margin-top: 70px;
+    }
+
+    .gallery-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .gallery-hero p {
+        font-size: 1rem;
+    }
+
+    .gallery-filters {
+        top: 70px;
+        padding: 1.5rem 0;
+    }
+
+    .filter-buttons {
+        gap: 0.8rem;
+        padding: 0 1rem;
+    }
+
+    .filter-btn {
+        padding: 6px 15px;
+        font-size: 0.8rem;
+    }
+
+    .main-gallery .masonry-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .main-gallery .masonry-grid .gallery-item img {
+        min-height: 180px;
+        max-height: 300px;
+    }
+
+    .main-gallery .masonry-grid .gallery-item .gallery-caption {
+        padding: 2rem 1rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .main-gallery {
+        padding: 2rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-hero {
+        height: 40vh;
+        min-height: 300px;
+    }
+
+    .gallery-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .filter-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+
+    .filter-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-gallery .masonry-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+
+    .main-gallery .masonry-grid .gallery-item {
+        max-width: 100%;
+    }
+
+    .main-gallery .masonry-grid .gallery-item img {
+        min-height: 200px;
+        max-height: 350px;
+    }
+
+    .load-more-btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Special effects for featured images */
+.gallery-item[data-category*="landscapes"] {
+    position: relative;
+}
+
+.gallery-item[data-category*="landscapes"]::before {
+    content: '🏔️';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px 8px;
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+}
+
+.gallery-item[data-category*="customers"]::before {
+    content: '😊';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px 8px;
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+}
+
+/* Pinterest-style hover effects */
+.masonry-grid .gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.masonry-grid .gallery-item:hover::after {
+    opacity: 0.1;
+}

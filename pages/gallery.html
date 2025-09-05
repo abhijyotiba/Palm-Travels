@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Photo Gallery - Beautiful moments captured from Palm Travels adventures around the world.">
+    <title>Photo Gallery - Palm Travels</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="../index.html">Palm Travels</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../index.html#destinations" class="nav-link">Destinations</a>
+                </li>
+                <li class="nav-item">
+                    <a href="packages.html" class="nav-link">Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link active">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Hero -->
+    <section class="gallery-hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Travel Gallery</h1>
+            <p>Capturing moments from our incredible journeys around the world</p>
+        </div>
+    </section>
+
+    <!-- Gallery Filters -->
+    <section class="gallery-filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Photos</button>
+                <button class="filter-btn" data-filter="destinations">Destinations</button>
+                <button class="filter-btn" data-filter="packages">Packages</button>
+                <button class="filter-btn" data-filter="customers">Happy Customers</button>
+                <button class="filter-btn" data-filter="landscapes">Landscapes</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Gallery -->
+    <section class="main-gallery">
+        <div class="container">
+            <div class="masonry-grid">
+                <!-- Destinations -->
+                <div class="gallery-item" data-category="destinations landscapes" data-caption="Golden Sunset at Goa Beach">
+                    <img src="../images/destinations/goa-beach.avif" alt="Beautiful sunset at Goa Beach" loading="lazy">
+                    <div class="gallery-caption">Golden Sunset at Goa Beach</div>
+                </div>
+                
+                <div class="gallery-item" data-category="destinations" data-caption="Majestic Udaipur Palace">
+                    <img src="../images/destinations/udaipur-palace.png" alt="Stunning Udaipur Palace architecture" loading="lazy">
+                    <div class="gallery-caption">Majestic Udaipur Palace</div>
+                </div>
+                
+                <div class="gallery-item" data-category="destinations landscapes" data-caption="Snow-capped Manali Mountains">
+                    <img src="../images/destinations/manali-mountains.avif" alt="Breathtaking view of Manali mountains" loading="lazy">
+                    <div class="gallery-caption">Snow-capped Manali Mountains</div>
+                </div>
+                
+                <div class="gallery-item" data-category="destinations" data-caption="Serene Gokarna Temple">
+                    <img src="../images/destinations/gokarna-temple.png" alt="Peaceful Gokarna temple by the sea" loading="lazy">
+                    <div class="gallery-caption">Serene Gokarna Temple</div>
+                </div>
+
+                <!-- Packages -->
+                <div class="gallery-item" data-category="packages landscapes" data-caption="Kerala Backwater Serenity">
+                    <img src="../images/homepage/package-1.jpg" alt="Peaceful Kerala backwater cruise" loading="lazy">
+                    <div class="gallery-caption">Kerala Backwater Serenity</div>
+                </div>
+                
+                <div class="gallery-item" data-category="packages" data-caption="Royal Rajasthan Heritage">
+                    <img src="../images/homepage/package-2.webp" alt="Historic Rajasthan palace and culture" loading="lazy">
+                    <div class="gallery-caption">Royal Rajasthan Heritage</div>
+                </div>
+                
+                <div class="gallery-item" data-category="packages landscapes" data-caption="Himalayan Adventure Trek">
+                    <img src="../images/homepage/package-3.jpg" alt="Exciting Himalayan trekking adventure" loading="lazy">
+                    <div class="gallery-caption">Himalayan Adventure Trek</div>
+                </div>
+
+                <!-- Happy Customers -->
+                <div class="gallery-item" data-category="customers" data-caption="Satisfied Travelers - Harsh & Family">
+                    <img src="../images/testimonials/harsh.png" alt="Satisfied customers enjoying their trip" loading="lazy">
+                    <div class="gallery-caption">Satisfied Travelers - Harsh & Family</div>
+                </div>
+                
+                <div class="gallery-item" data-category="customers" data-caption="Family Fun Moments - Aarsh's Journey">
+                    <img src="../images/testimonials/aarsh.jpg" alt="Family enjoying their vacation together" loading="lazy">
+                    <div class="gallery-caption">Family Fun Moments - Aarsh's Journey</div>
+                </div>
+                
+                <div class="gallery-item" data-category="customers" data-caption="Solo Explorer - Tejas's Adventure">
+                    <img src="../images/testimonials/tejas.png" alt="Solo traveler enjoying the journey" loading="lazy">
+                    <div class="gallery-caption">Solo Explorer - Tejas's Adventure</div>
+                </div>
+
+                <!-- Additional placeholder items for demonstration -->
+                <div class="gallery-item" data-category="landscapes" data-caption="Mystic Mountain Valley">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop" alt="Beautiful mountain valley view" loading="lazy">
+                    <div class="gallery-caption">Mystic Mountain Valley</div>
+                </div>
+                
+                <div class="gallery-item" data-category="destinations" data-caption="Ancient Temple Architecture">
+                    <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=400&h=500&fit=crop" alt="Historic temple with intricate carvings" loading="lazy">
+                    <div class="gallery-caption">Ancient Temple Architecture</div>
+                </div>
+                
+                <div class="gallery-item" data-category="landscapes" data-caption="Coastal Paradise">
+                    <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=400&h=550&fit=crop" alt="Pristine coastal landscape" loading="lazy">
+                    <div class="gallery-caption">Coastal Paradise</div>
+                </div>
+                
+                <div class="gallery-item" data-category="packages" data-caption="Cultural Festival Experience">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=480&fit=crop" alt="Vibrant cultural festival celebration" loading="lazy">
+                    <div class="gallery-caption">Cultural Festival Experience</div>
+                </div>
+                
+                <div class="gallery-item" data-category="landscapes" data-caption="Desert Sunset Magic">
+                    <img src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=400&h=520&fit=crop" alt="Beautiful desert sunset with dunes" loading="lazy">
+                    <div class="gallery-caption">Desert Sunset Magic</div>
+                </div>
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button class="load-more-btn" id="loadMorePhotos">
+                    <i class="fas fa-camera"></i>
+                    Load More Photos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img id="lightbox-image" src="" alt="">
+            <div id="lightbox-caption"></div>
+            <div class="lightbox-nav">
+                <button id="lightbox-prev" class="lightbox-btn">&lt;</button>
+                <button id="lightbox-next" class="lightbox-btn">&gt;</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Palm Travels</h3>
+                    <p>Your trusted travel partner for extraordinary adventures around the world.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Destinations</h4>
+                    <ul>
+                        <li><a href="#">North India</a></li>
+                        <li><a href="#">South India</a></li>
+                        <li><a href="#">Western Ghats</a></li>
+                        <li><a href="#">Himalayas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +91 9372495692</p>
+                        <p><i class="fas fa-envelope"></i> info@palmtravels.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Mumbai, India</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Palm Travels. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/gallery.js"></script>
+    <script src="../js/animations.js"></script>
+</body>
+</html>
