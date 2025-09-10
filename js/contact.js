@@ -338,7 +338,6 @@ function initializeFieldSuggestions() {
 // Contact form tracking (for analytics)
 function trackFormInteraction(action, field = null) {
     // Example analytics tracking
-    console.log(`Form interaction: ${action}`, field);
     
     // You could integrate with Google Analytics, Facebook Pixel, etc.
     // gtag('event', action, {

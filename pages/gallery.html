@@ -15,6 +15,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
+                <img src="../images/logo/treeBG.png" alt="Palm Travels Logo" class="logo-img">
                 <h2><a href="../index.html">Palm Travels</a></h2>
             </div>
             <ul class="nav-menu">
@@ -56,100 +57,176 @@
         </div>
     </section>
 
-    <!-- Gallery Filters -->
+    <!-- Enhanced Gallery Filters with Search -->
     <section class="gallery-filters">
         <div class="container">
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Photos</button>
-                <button class="filter-btn" data-filter="destinations">Destinations</button>
-                <button class="filter-btn" data-filter="packages">Packages</button>
-                <button class="filter-btn" data-filter="customers">Happy Customers</button>
-                <button class="filter-btn" data-filter="landscapes">Landscapes</button>
+            <div class="filter-controls">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Photos</button>
+                    <button class="filter-btn" data-filter="destinations">Destinations</button>
+                    <button class="filter-btn" data-filter="customers">Happy Customers</button>
+                    <button class="filter-btn" data-filter="landscapes">Landscapes</button>
+                </div>
+                
+                <!-- Optional Search Bar (can be uncommented if needed) -->
+                <!--
+                <div class="search-container">
+                    <input type="text" id="gallery-search" placeholder="Search photos..." 
+                           aria-label="Search through gallery photos">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                -->
             </div>
         </div>
     </section>
 
-    <!-- Main Gallery -->
-    <section class="main-gallery">
+    <!-- Enhanced Main Gallery -->
+    <section class="main-gallery" id="main-gallery">
         <div class="container">
-            <div class="masonry-grid">
-                <!-- Destinations -->
-                <div class="gallery-item" data-category="destinations landscapes" data-caption="Golden Sunset at Goa Beach">
-                    <img src="../images/destinations/goa-beach.avif" alt="Beautiful sunset at Goa Beach" loading="lazy">
+            <div class="gallery-header">
+                <h2>Our Photography Collection</h2>
+                <p>Discover the beauty of India through our lens - from majestic landscapes to cultural treasures</p>
+            </div>
+            
+            <div class="masonry-grid" role="region" aria-label="Photo gallery">
+                <!-- Destinations - Pure destination photos -->
+                <div class="gallery-item" data-category="destinations" 
+                     data-caption="Golden Sunset at Goa Beach" 
+                     role="button" tabindex="0" 
+                     aria-label="View image: Golden Sunset at Goa Beach">
+                    <img src="../images/gallery/destinations/goa-beach.avif" alt="Beautiful sunset at Goa Beach with golden reflections on water" loading="lazy">
                     <div class="gallery-caption">Golden Sunset at Goa Beach</div>
                 </div>
                 
-                <div class="gallery-item" data-category="destinations" data-caption="Majestic Udaipur Palace">
-                    <img src="../images/destinations/udaipur-palace.png" alt="Stunning Udaipur Palace architecture" loading="lazy">
+                <div class="gallery-item" data-category="destinations" data-caption="Majestic Udaipur Palace"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Majestic Udaipur Palace">
+                    <img src="../images/gallery/destinations/udaipur-palace.png" alt="Stunning Udaipur Palace architecture" loading="lazy">
                     <div class="gallery-caption">Majestic Udaipur Palace</div>
                 </div>
                 
-                <div class="gallery-item" data-category="destinations landscapes" data-caption="Snow-capped Manali Mountains">
-                    <img src="../images/destinations/manali-mountains.avif" alt="Breathtaking view of Manali mountains" loading="lazy">
-                    <div class="gallery-caption">Snow-capped Manali Mountains</div>
-                </div>
-                
-                <div class="gallery-item" data-category="destinations" data-caption="Serene Gokarna Temple">
-                    <img src="../images/destinations/gokarna-temple.png" alt="Peaceful Gokarna temple by the sea" loading="lazy">
+                <div class="gallery-item" data-category="destinations" data-caption="Serene Gokarna Temple"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Serene Gokarna Temple">
+                    <img src="../images/gallery/destinations/gokarna-temple.png" alt="Peaceful Gokarna temple by the sea" loading="lazy">
                     <div class="gallery-caption">Serene Gokarna Temple</div>
                 </div>
 
-                <!-- Packages -->
-                <div class="gallery-item" data-category="packages landscapes" data-caption="Kerala Backwater Serenity">
-                    <img src="../images/homepage/package-1.jpg" alt="Peaceful Kerala backwater cruise" loading="lazy">
+                <!-- Landscapes - Natural scenery and landscapes -->
+                <div class="gallery-item" data-category="landscapes" data-caption="Snow-capped Manali Mountains"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Snow-capped Manali Mountains">
+                    <img src="../images/gallery/destinations/manali-mountains.avif" alt="Breathtaking view of Manali mountains" loading="lazy">
+                    <div class="gallery-caption">Snow-capped Manali Mountains</div>
+                </div>
+                
+                <div class="gallery-item" data-category="landscapes" data-caption="Kerala Backwater Serenity"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Kerala Backwater Serenity">
+                    <img src="../images/gallery/landscapes/package-1.jpg" alt="Peaceful Kerala backwater cruise" loading="lazy">
                     <div class="gallery-caption">Kerala Backwater Serenity</div>
                 </div>
                 
-                <div class="gallery-item" data-category="packages" data-caption="Royal Rajasthan Heritage">
-                    <img src="../images/homepage/package-2.webp" alt="Historic Rajasthan palace and culture" loading="lazy">
-                    <div class="gallery-caption">Royal Rajasthan Heritage</div>
-                </div>
-                
-                <div class="gallery-item" data-category="packages landscapes" data-caption="Himalayan Adventure Trek">
-                    <img src="../images/homepage/package-3.jpg" alt="Exciting Himalayan trekking adventure" loading="lazy">
+                <div class="gallery-item" data-category="landscapes" data-caption="Himalayan Adventure Trek"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Himalayan Adventure Trek">
+                    <img src="../images/gallery/landscapes/package-3.jpg" alt="Exciting Himalayan trekking adventure" loading="lazy">
                     <div class="gallery-caption">Himalayan Adventure Trek</div>
                 </div>
+                
+                <div class="gallery-item" data-category="destinations" data-caption="Royal Rajasthan Heritage"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Royal Rajasthan Heritage">
+                    <img src="../images/gallery/landscapes/package-2.webp" alt="Historic Rajasthan palace and culture" loading="lazy">
+                    <div class="gallery-caption">Royal Rajasthan Heritage</div>
+                </div>
 
-                <!-- Happy Customers -->
-                <div class="gallery-item" data-category="customers" data-caption="Satisfied Travelers - Harsh & Family">
-                    <img src="../images/testimonials/harsh.png" alt="Satisfied customers enjoying their trip" loading="lazy">
+                <!-- Happy Customers - Customer testimonial photos -->
+                <div class="gallery-item" data-category="customers" data-caption="Satisfied Travelers - Harsh & Family"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Satisfied Travelers - Harsh & Family">
+                    <img src="../images/gallery/customers/harsh.png" alt="Satisfied customers enjoying their trip" loading="lazy">
                     <div class="gallery-caption">Satisfied Travelers - Harsh & Family</div>
                 </div>
                 
-                <div class="gallery-item" data-category="customers" data-caption="Family Fun Moments - Aarsh's Journey">
-                    <img src="../images/testimonials/aarsh.jpg" alt="Family enjoying their vacation together" loading="lazy">
+                <div class="gallery-item" data-category="customers" data-caption="Family Fun Moments - Aarsh's Journey"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Family Fun Moments - Aarsh's Journey">
+                    <img src="../images/gallery/customers/aarsh.jpg" alt="Family enjoying their vacation together" loading="lazy">
                     <div class="gallery-caption">Family Fun Moments - Aarsh's Journey</div>
                 </div>
                 
-                <div class="gallery-item" data-category="customers" data-caption="Solo Explorer - Tejas's Adventure">
-                    <img src="../images/testimonials/tejas.png" alt="Solo traveler enjoying the journey" loading="lazy">
+                <div class="gallery-item" data-category="customers" data-caption="Solo Explorer - Tejas's Adventure"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Solo Explorer - Tejas's Adventure">
+                    <img src="../images/gallery/customers/tejas.png" alt="Solo traveler enjoying the journey" loading="lazy">
                     <div class="gallery-caption">Solo Explorer - Tejas's Adventure</div>
                 </div>
 
-                <!-- Additional placeholder items for demonstration -->
-                <div class="gallery-item" data-category="landscapes" data-caption="Mystic Mountain Valley">
+                <!-- Additional demonstration images with proper categorization -->
+                <div class="gallery-item" data-category="landscapes" data-caption="Mystic Mountain Valley"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Mystic Mountain Valley">
                     <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop" alt="Beautiful mountain valley view" loading="lazy">
                     <div class="gallery-caption">Mystic Mountain Valley</div>
                 </div>
                 
-                <div class="gallery-item" data-category="destinations" data-caption="Ancient Temple Architecture">
+                <div class="gallery-item" data-category="destinations" data-caption="Ancient Temple Architecture"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Ancient Temple Architecture">
                     <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=400&h=500&fit=crop" alt="Historic temple with intricate carvings" loading="lazy">
                     <div class="gallery-caption">Ancient Temple Architecture</div>
                 </div>
                 
-                <div class="gallery-item" data-category="landscapes" data-caption="Coastal Paradise">
+                <div class="gallery-item" data-category="landscapes" data-caption="Coastal Paradise"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Coastal Paradise">
                     <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=400&h=550&fit=crop" alt="Pristine coastal landscape" loading="lazy">
                     <div class="gallery-caption">Coastal Paradise</div>
                 </div>
                 
-                <div class="gallery-item" data-category="packages" data-caption="Cultural Festival Experience">
+                <div class="gallery-item" data-category="destinations" data-caption="Cultural Festival Experience"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Cultural Festival Experience">
                     <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=480&fit=crop" alt="Vibrant cultural festival celebration" loading="lazy">
                     <div class="gallery-caption">Cultural Festival Experience</div>
                 </div>
                 
-                <div class="gallery-item" data-category="landscapes" data-caption="Desert Sunset Magic">
+                <div class="gallery-item" data-category="landscapes" data-caption="Desert Sunset Magic"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Desert Sunset Magic">
                     <img src="https://images.unsplash.com/photo-1609198092458-38a293c7ac4b?w=400&h=520&fit=crop" alt="Beautiful desert sunset with dunes" loading="lazy">
                     <div class="gallery-caption">Desert Sunset Magic</div>
+                </div>
+                
+                <!-- Additional destination photos -->
+                <div class="gallery-item" data-category="destinations" data-caption="Beautiful Beach Resort"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Beautiful Beach Resort">
+                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=400&h=500&fit=crop" alt="Beautiful beach resort destination" loading="lazy">
+                    <div class="gallery-caption">Beautiful Beach Resort</div>
+                </div>
+                
+                <div class="gallery-item" data-category="landscapes" data-caption="Mountain Adventure Destination"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Mountain Adventure Destination">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=450&fit=crop" alt="Stunning mountain landscape for adventure" loading="lazy">
+                    <div class="gallery-caption">Mountain Adventure Destination</div>
+                </div>
+                
+                <!-- More destination photos -->
+                <div class="gallery-item" data-category="destinations" data-caption="Historic Fort Architecture"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Historic Fort Architecture">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=400&h=550&fit=crop" alt="Ancient fort with stunning architecture" loading="lazy">
+                    <div class="gallery-caption">Historic Fort Architecture</div>
+                </div>
+                
+                <div class="gallery-item" data-category="destinations" data-caption="Colorful Market Streets"
+                     role="button" tabindex="0" 
+                     aria-label="View image: Colorful Market Streets">
+                    <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&h=480&fit=crop" alt="Vibrant local market with colorful goods" loading="lazy">
+                    <div class="gallery-caption">Colorful Market Streets</div>
                 </div>
             </div>
             
@@ -162,19 +239,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <div class="lightbox-content">
-            <span class="lightbox-close">&times;</span>
-            <img id="lightbox-image" src="" alt="">
-            <div id="lightbox-caption"></div>
-            <div class="lightbox-nav">
-                <button id="lightbox-prev" class="lightbox-btn">&lt;</button>
-                <button id="lightbox-next" class="lightbox-btn">&gt;</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -196,7 +260,6 @@
                         <li><a href="../index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="packages.html">Packages</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>

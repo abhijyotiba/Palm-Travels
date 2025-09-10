@@ -486,7 +486,7 @@ function addAnimationStyles() {
     document.head.appendChild(style);
 }
 
-// Performance optimization
+// Performance optimization (used in multiple functions)
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -512,15 +512,6 @@ const animationStyles = `
         to {
             transform: scale(4);
             opacity: 0;
-        }
-    }
-    
-    @keyframes shimmer {
-        0% {
-            background-position: -1000px 0;
-        }
-        100% {
-            background-position: 1000px 0;
         }
     }
     
@@ -562,12 +553,6 @@ const animationStyles = `
             opacity: 1;
             transform: scale(1);
         }
-    }
-    
-    .shimmer {
-        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-        background-size: 1000px 100%;
-        animation: shimmer 2s infinite;
     }
     
     .touch-active {

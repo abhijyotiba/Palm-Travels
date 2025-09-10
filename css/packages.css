@@ -271,6 +271,8 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    justify-content: space-between;
+    min-height: 280px;
 }
 
 .package-category {
@@ -415,25 +417,33 @@
     transform: translateX(5px) scale(1.2) rotate(15deg);
 }
 
+/* Package bottom section for consistent alignment */
 .package-price {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--baby-pink);
+    color: #2c2c2c;
     margin-bottom: 1.5rem;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    margin-top: auto;
+    padding: 1rem 0;
+    border-top: 2px solid #f0f0f0;
+    background: rgba(248, 248, 248, 0.5);
+    border-radius: 8px;
 }
 
 .package-card:hover .package-price {
     transform: scale(1.15) translateY(-5px);
-    text-shadow: 0 4px 15px rgba(255, 182, 193, 0.5);
-    color: var(--primary-color);
+    text-shadow: 0 4px 15px rgba(44, 44, 44, 0.3);
+    color: #000000;
+    background: rgba(44, 44, 44, 0.05);
+    border-top-color: #ddd;
 }
 
 .package-btn {
     width: 100%;
-    background: var(--primary-color);
+    background: #2c2c2c;
     color: white;
     border: none;
     padding: 15px;
@@ -446,7 +456,7 @@
     letter-spacing: 0.5px;
     position: relative;
     overflow: hidden;
-    margin-top: auto;
+    margin-top: 0;
 }
 
 .package-btn::before {
@@ -461,9 +471,9 @@
 }
 
 .package-btn:hover {
-    background: #B8956B;
+    background: #000000;
     transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(184, 149, 107, 0.4);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
 .package-btn:hover::before {
@@ -709,6 +719,12 @@
     .package-price {
         font-size: 1.2rem;
         margin-bottom: 0.8rem;
+        padding: 0.5rem 0;
+    }
+
+    .package-info {
+        padding: 1.5rem;
+        min-height: 250px;
     }
 
     .package-btn {
@@ -716,6 +732,11 @@
         font-size: 0.85rem;
         border-radius: 8px;
         margin-top: auto;
+    }
+
+    .package-btn:active {
+        transform: scale(0.98);
+        background: #000000;
     }
 
     .filters-wrapper {

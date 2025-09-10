@@ -15,6 +15,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
+                <img src="../images/logo/treeBG.png" alt="Palm Travels Logo" class="logo-img">
                 <h2><a href="../index.html">Palm Travels</a></h2>
             </div>
             <ul class="nav-menu">
@@ -61,8 +62,12 @@
         <div class="container">
             <div class="filters-wrapper">
                 <div class="filter-group">
+                    <label>Search:</label>
+                    <input type="text" id="search-filter" placeholder="Search packages..." style="padding: 8px 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem;">
+                </div>
+                <div class="filter-group">
                     <label>Category:</label>
-                    <select id="category-filter" onchange="filterByCategory(this.value)">
+                    <select id="category-filter">
                         <option value="all">All Categories</option>
                         <option value="romantic">Romantic</option>
                         <option value="family">Family</option>
@@ -74,7 +79,7 @@
                 </div>
                 <div class="filter-group">
                     <label>Duration:</label>
-                    <select id="duration-filter" onchange="filterByDuration(this.value)">
+                    <select id="duration-filter">
                         <option value="all">All Durations</option>
                         <option value="short">1-5 Days</option>
                         <option value="medium">6-10 Days</option>
@@ -84,13 +89,16 @@
                 <div class="filter-group">
                     <label>Price Range:</label>
                     <div class="price-range">
-                        <input type="range" id="price-range" min="500" max="5000" value="5000" step="100">
-                        <span id="price-output">$5000</span>
+                        <input type="range" id="price-range" min="5000" max="50000" value="50000" step="1000">
+                        <span id="price-output">₹50,000</span>
                     </div>
                 </div>
                 <div class="filter-group">
                     <button class="clear-filters" onclick="clearAllFilters()">Clear Filters</button>
                 </div>
+            </div>
+            <div class="results-counter" style="text-align: center; margin-top: 1rem; font-weight: 600; color: var(--text-light);">
+                <span id="results-counter">Showing all packages</span>
             </div>
         </div>
     </section>
@@ -394,24 +402,25 @@
                         <li><a href="../index.html">Home</a></li>
                         <li><a href="../index.html#about">About Us</a></li>
                         <li><a href="packages.html">Packages</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Destinations</h4>
                     <ul>
-                        <li><a href="#">Asia</a></li>
-                        <li><a href="#">Europe</a></li>
-                        <li><a href="#">America</a></li>
-                        <li><a href="#">Africa</a></li>
+                        <li><a href="#">North India</a></li>
+                        <li><a href="#">South India</a></li>
+                        <li><a href="#">Western Ghats</a></li>
+                        <li><a href="#">Himalayas</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Contact Info</h4>
                     <div class="contact-info">
-                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-phone"></i> +91 9372495692</p>
                         <p><i class="fas fa-envelope"></i> info@palmtravels.com</p>
-                        <p><i class="fas fa-map-marker-alt"></i> 123 Travel Street, City, State 12345</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Mumbai, India</p>
                     </div>
                 </div>
             </div>

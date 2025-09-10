@@ -1,113 +1,134 @@
 // Packages Page JavaScript
 
-// Filter functionality
-function filterByCategory(category) {
+// Global filter state
+let currentFilters = {
+    category: 'all',
+    duration: 'all',
+    maxPrice: 50000,
+    searchTerm: ''
+};
+
+// Combined filter functionality - this is the main filter function
+function applyAllFilters() {
     const packages = document.querySelectorAll('.package-card');
+    let visibleCount = 0;
     
     packages.forEach(package => {
         const packageCategory = package.getAttribute('data-category');
-        
-        if (category === 'all' || packageCategory === category) {
-            package.style.display = 'block';
-            package.classList.add('fade-in');
-        } else {
-            package.style.display = 'none';
-            package.classList.remove('fade-in');
-        }
-    });
-    
-    updateResultsCount();
-}
-
-function filterByDuration(duration) {
-    const packages = document.querySelectorAll('.package-card');
-    
-    packages.forEach(package => {
         const packageDuration = parseInt(package.getAttribute('data-duration'));
-        let showPackage = false;
+        const packagePrice = parseInt(package.getAttribute('data-price'));
         
-        switch(duration) {
-            case 'all':
-                showPackage = true;
-                break;
-            case 'short':
-                showPackage = packageDuration <= 5;
-                break;
-            case 'medium':
-                showPackage = packageDuration >= 6 && packageDuration <= 10;
-                break;
-            case 'long':
-                showPackage = packageDuration >= 11;
-                break;
+        // Get package text content for search
+        const title = package.querySelector('h3').textContent.toLowerCase();
+        const description = package.querySelector('p').textContent.toLowerCase();
+        const category = package.querySelector('.package-category').textContent.toLowerCase();
+        const packageText = (title + ' ' + description + ' ' + category).toLowerCase();
+        
+        let showPackage = true;
+        
+        // Search filter
+        if (currentFilters.searchTerm && !packageText.includes(currentFilters.searchTerm.toLowerCase())) {
+            showPackage = false;
         }
         
+        // Category filter
+        if (currentFilters.category !== 'all' && packageCategory !== currentFilters.category) {
+            showPackage = false;
+        }
+        
+        // Duration filter
+        if (currentFilters.duration !== 'all') {
+            switch(currentFilters.duration) {
+                case 'short':
+                    if (packageDuration > 5) showPackage = false;
+                    break;
+                case 'medium':
+                    if (packageDuration < 6 || packageDuration > 10) showPackage = false;
+                    break;
+                case 'long':
+                    if (packageDuration < 11) showPackage = false;
+                    break;
+            }
+        }
+        
+        // Price filter
+        if (packagePrice > currentFilters.maxPrice) {
+            showPackage = false;
+        }
+        
+        // Show or hide package
         if (showPackage) {
             package.style.display = 'block';
             package.classList.add('fade-in');
+            package.classList.remove('hidden');
+            visibleCount++;
         } else {
             package.style.display = 'none';
             package.classList.remove('fade-in');
+            package.classList.add('hidden');
         }
     });
     
-    updateResultsCount();
+    updateResultsCount(visibleCount, packages.length);
+}
+
+// Individual filter functions that update the global state
+function filterBySearch(searchTerm) {
+    currentFilters.searchTerm = searchTerm;
+    applyAllFilters();
+}
+
+function filterByCategory(category) {
+    currentFilters.category = category;
+    applyAllFilters();
+}
+
+function filterByDuration(duration) {
+    currentFilters.duration = duration;
+    applyAllFilters();
 }
 
 function filterByPrice(maxPrice) {
-    const packages = document.querySelectorAll('.package-card');
-    
-    packages.forEach(package => {
-        const packagePrice = parseInt(package.getAttribute('data-price'));
-        
-        if (packagePrice <= maxPrice) {
-            package.style.display = 'block';
-            package.classList.add('fade-in');
-        } else {
-            package.style.display = 'none';
-            package.classList.remove('fade-in');
-        }
-    });
-    
-    updateResultsCount();
+    currentFilters.maxPrice = maxPrice;
+    applyAllFilters();
 }
 
 function clearAllFilters() {
-    // Reset all filter selects
+    // Reset global filter state
+    currentFilters = {
+        category: 'all',
+        duration: 'all',
+        maxPrice: 50000,
+        searchTerm: ''
+    };
+    
+    // Reset all filter controls
+    document.getElementById('search-filter').value = '';
     document.getElementById('category-filter').value = 'all';
     document.getElementById('duration-filter').value = 'all';
-    document.getElementById('price-range').value = 5000;
-    document.getElementById('price-output').textContent = '$5000';
+    document.getElementById('price-range').value = 50000;
+    document.getElementById('price-output').textContent = '₹50,000';
     
-    // Show all packages
-    const packages = document.querySelectorAll('.package-card');
-    packages.forEach(package => {
-        package.style.display = 'block';
-        package.classList.add('fade-in');
-    });
-    
-    updateResultsCount();
+    // Apply filters (which will show all packages)
+    applyAllFilters();
 }
 
-function updateResultsCount() {
-    const visiblePackages = document.querySelectorAll('.package-card[style*="display: block"], .package-card:not([style*="display: none"])');
-    const totalPackages = document.querySelectorAll('.package-card').length;
-    
-    // You can add a results counter here if needed
-    console.log(`Showing ${visiblePackages.length} of ${totalPackages} packages`);
-}
-
-// Price range slider functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const priceRange = document.getElementById('price-range');
-    const priceOutput = document.getElementById('price-output');
-    
-    if (priceRange && priceOutput) {
-        priceRange.addEventListener('input', function() {
-            priceOutput.textContent = '$' + this.value;
-            filterByPrice(parseInt(this.value));
-        });
+function updateResultsCount(visibleCount, totalCount) {
+    const resultsCounter = document.getElementById('results-counter');
+    if (resultsCounter) {
+        if (visibleCount === totalCount) {
+            resultsCounter.textContent = `Showing all ${totalCount} packages`;
+        } else {
+            resultsCounter.textContent = `Showing ${visibleCount} of ${totalCount} packages`;
+        }
     }
-});
+    
+}
+
+// Helper function to format price with commas
+function formatPrice(price) {
+    return price.toLocaleString('en-IN');
+}
 
 // Package detail modal/redirect functionality
 function openPackageDetails(packageId) {
@@ -179,214 +200,53 @@ function loadMorePackages() {
     }, 1000);
 }
 
-// Combined filter functionality
-function applyAllFilters() {
-    const category = document.getElementById('category-filter').value;
-    const duration = document.getElementById('duration-filter').value;
-    const maxPrice = parseInt(document.getElementById('price-range').value);
-    
-    const packages = document.querySelectorAll('.package-card');
-    
-    packages.forEach(package => {
-        const packageCategory = package.getAttribute('data-category');
-        const packageDuration = parseInt(package.getAttribute('data-duration'));
-        const packagePrice = parseInt(package.getAttribute('data-price'));
-        
-        let showPackage = true;
-        
-        // Category filter
-        if (category !== 'all' && packageCategory !== category) {
-            showPackage = false;
-        }
-        
-        // Duration filter
-        if (duration !== 'all') {
-            switch(duration) {
-                case 'short':
-                    if (packageDuration > 5) showPackage = false;
-                    break;
-                case 'medium':
-                    if (packageDuration < 6 || packageDuration > 10) showPackage = false;
-                    break;
-                case 'long':
-                    if (packageDuration < 11) showPackage = false;
-                    break;
-            }
-        }
-        
-        // Price filter
-        if (packagePrice > maxPrice) {
-            showPackage = false;
-        }
-        
-        if (showPackage) {
-            package.style.display = 'block';
-            package.classList.add('fade-in');
-        } else {
-            package.style.display = 'none';
-            package.classList.remove('fade-in');
-        }
-    });
-    
-    updateResultsCount();
-}
-
-// Add event listeners for combined filtering
+// Initialize page
 document.addEventListener('DOMContentLoaded', function() {
+    const priceRange = document.getElementById('price-range');
+    const priceOutput = document.getElementById('price-output');
+    const searchFilter = document.getElementById('search-filter');
     const categoryFilter = document.getElementById('category-filter');
     const durationFilter = document.getElementById('duration-filter');
-    const priceRange = document.getElementById('price-range');
     
+    // Set initial values
+    if (priceRange && priceOutput) {
+        priceRange.value = currentFilters.maxPrice;
+        priceOutput.textContent = '₹' + formatPrice(currentFilters.maxPrice);
+        
+        priceRange.addEventListener('input', function() {
+            const value = parseInt(this.value);
+            priceOutput.textContent = '₹' + formatPrice(value);
+            filterByPrice(value);
+        });
+    }
+    
+    // Add search functionality with debouncing
+    if (searchFilter) {
+        let searchTimeout;
+        searchFilter.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                filterBySearch(this.value);
+            }, 300); // Wait 300ms after user stops typing
+        });
+    }
+    
+    // Add event listeners for other filters
     if (categoryFilter) {
-        categoryFilter.addEventListener('change', applyAllFilters);
+        categoryFilter.addEventListener('change', function() {
+            filterByCategory(this.value);
+        });
     }
     
     if (durationFilter) {
-        durationFilter.addEventListener('change', applyAllFilters);
-    }
-    
-    if (priceRange) {
-        priceRange.addEventListener('input', function() {
-            document.getElementById('price-output').textContent = '$' + this.value;
-            applyAllFilters();
+        durationFilter.addEventListener('change', function() {
+            filterByDuration(this.value);
         });
     }
-});
-
-// Search functionality (can be added to the filters section)
-function searchPackages(searchTerm) {
-    const packages = document.querySelectorAll('.package-card');
-    const term = searchTerm.toLowerCase();
     
-    packages.forEach(package => {
-        const title = package.querySelector('h3').textContent.toLowerCase();
-        const description = package.querySelector('p').textContent.toLowerCase();
-        const category = package.querySelector('.package-category').textContent.toLowerCase();
-        
-        if (title.includes(term) || description.includes(term) || category.includes(term)) {
-            package.style.display = 'block';
-            package.classList.add('fade-in');
-        } else {
-            package.style.display = 'none';
-            package.classList.remove('fade-in');
-        }
-    });
-    
-    updateResultsCount();
-}
-
-// Sort functionality
-function sortPackages(sortBy) {
-    const container = document.getElementById('packages-container');
-    const packages = Array.from(container.querySelectorAll('.package-card'));
-    
-    packages.sort((a, b) => {
-        switch(sortBy) {
-            case 'price-low':
-                return parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price'));
-            case 'price-high':
-                return parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price'));
-            case 'duration-short':
-                return parseInt(a.getAttribute('data-duration')) - parseInt(b.getAttribute('data-duration'));
-            case 'duration-long':
-                return parseInt(b.getAttribute('data-duration')) - parseInt(a.getAttribute('data-duration'));
-            case 'name':
-                return a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent);
-            default:
-                return 0;
-        }
-    });
-    
-    // Clear container and re-append sorted packages
-    container.innerHTML = '';
-    packages.forEach(package => container.appendChild(package));
-}
-
-// Booking inquiry functionality
-function openBookingInquiry(packageTitle) {
-    const message = `Hi! I'm interested in booking the "${packageTitle}" package. Could you please provide more details about availability and pricing?`;
-    
-    // This could open a modal form or redirect to contact page with pre-filled information
-    if (confirm('Would you like to send a WhatsApp message for immediate assistance?')) {
-        openWhatsApp(message);
-    } else {
-        // Redirect to contact page with package info
-        const contactUrl = `contact.html?package=${encodeURIComponent(packageTitle)}`;
-        window.location.href = contactUrl;
-    }
-}
-
-// Package comparison functionality
-let comparisonList = [];
-
-function addToComparison(packageElement) {
-    const packageTitle = packageElement.querySelector('h3').textContent;
-    const packagePrice = packageElement.querySelector('.package-price').textContent;
-    const packageCategory = packageElement.querySelector('.package-category').textContent;
-    
-    const packageData = {
-        title: packageTitle,
-        price: packagePrice,
-        category: packageCategory,
-        element: packageElement
-    };
-    
-    if (comparisonList.length < 3 && !comparisonList.find(p => p.title === packageTitle)) {
-        comparisonList.push(packageData);
-        updateComparisonUI();
-    } else if (comparisonList.length >= 3) {
-        alert('You can compare up to 3 packages at a time.');
-    } else {
-        alert('This package is already in your comparison list.');
-    }
-}
-
-function removeFromComparison(packageTitle) {
-    comparisonList = comparisonList.filter(p => p.title !== packageTitle);
-    updateComparisonUI();
-}
-
-function updateComparisonUI() {
-    // This would update a comparison widget/sidebar
-    console.log('Comparison list updated:', comparisonList);
-}
-
-// Wishlist functionality
-let wishlist = JSON.parse(localStorage.getItem('travelWishlist') || '[]');
-
-function toggleWishlist(packageElement) {
-    const packageTitle = packageElement.querySelector('h3').textContent;
-    const packageIndex = wishlist.findIndex(p => p.title === packageTitle);
-    
-    if (packageIndex === -1) {
-        // Add to wishlist
-        const packageData = {
-            title: packageTitle,
-            price: packageElement.querySelector('.package-price').textContent,
-            category: packageElement.querySelector('.package-category').textContent,
-            image: packageElement.querySelector('img').src
-        };
-        wishlist.push(packageData);
-        alert('Package added to your wishlist!');
-    } else {
-        // Remove from wishlist
-        wishlist.splice(packageIndex, 1);
-        alert('Package removed from your wishlist.');
-    }
-    
-    localStorage.setItem('travelWishlist', JSON.stringify(wishlist));
-    updateWishlistUI();
-}
-
-function updateWishlistUI() {
-    // Update wishlist icon/counter in the navigation
-    console.log('Wishlist updated:', wishlist);
-}
-
-// Initialize page
-document.addEventListener('DOMContentLoaded', function() {
-    updateResultsCount();
-    updateWishlistUI();
+    // Initialize page
+    const totalPackages = document.querySelectorAll('.package-card').length;
+    updateResultsCount(totalPackages, totalPackages);
     
     // Add smooth scrolling to filter section when coming from other pages
     if (window.location.hash === '#packages') {

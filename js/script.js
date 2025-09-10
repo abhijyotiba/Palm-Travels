@@ -263,55 +263,6 @@ function validateEmail(email) {
     return re.test(email);
 }
 
-// Lazy Loading for Images - Disabled temporarily to fix visibility issue
-// If you want to re-enable, make sure images are properly handled
-/*
-document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('img[src]');
-    
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                
-                // Only apply lazy loading if image hasn't loaded yet
-                if (!img.complete) {
-                    img.style.opacity = '0';
-                    img.style.transition = 'opacity 0.3s ease';
-                    
-                    img.onload = function() {
-                        this.style.opacity = '1';
-                    };
-                } else {
-                    // Image already loaded, ensure it's visible
-                    img.style.opacity = '1';
-                }
-                
-                observer.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-});
-*/
-
-// Search Functionality (for packages page)
-function filterPackages(category) {
-    const packages = document.querySelectorAll('.package-card');
-    
-    packages.forEach(package => {
-        const packageCategory = package.querySelector('.package-category').textContent.toLowerCase();
-        
-        if (category === 'all' || packageCategory === category.toLowerCase()) {
-            package.style.display = 'block';
-            package.style.animation = 'fadeInUp 0.5s ease';
-        } else {
-            package.style.display = 'none';
-        }
-    });
-}
-
 // Back to Top Button
 function createBackToTopButton() {
     const backToTop = document.createElement('button');
@@ -357,100 +308,6 @@ function createBackToTopButton() {
 
 // Initialize back to top button
 document.addEventListener('DOMContentLoaded', createBackToTopButton);
-
-// Testimonials Slider (Simple)
-let currentTestimonial = 0;
-const testimonials = document.querySelectorAll('.testimonial-card');
-
-function showTestimonial(index) {
-    testimonials.forEach((testimonial, i) => {
-        if (i === index) {
-            testimonial.style.display = 'block';
-            testimonial.style.animation = 'fadeInUp 0.5s ease';
-        } else {
-            testimonial.style.display = 'none';
-        }
-    });
-}
-
-// Auto-rotate testimonials on mobile
-function initTestimonialSlider() {
-    if (window.innerWidth <= 768 && testimonials.length > 1) {
-        setInterval(() => {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            showTestimonial(currentTestimonial);
-        }, 5000);
-    }
-}
-
-// Initialize on load and resize
-document.addEventListener('DOMContentLoaded', initTestimonialSlider);
-window.addEventListener('resize', initTestimonialSlider);
-
-// Contact Form Validation (for contact page)
-function validateContactForm(form) {
-    const name = form.querySelector('input[name="name"]').value.trim();
-    const email = form.querySelector('input[name="email"]').value.trim();
-    const phone = form.querySelector('input[name="phone"]').value.trim();
-    const message = form.querySelector('textarea[name="message"]').value.trim();
-    
-    let isValid = true;
-    let errors = [];
-    
-    if (name.length < 2) {
-        errors.push('Name must be at least 2 characters long');
-        isValid = false;
-    }
-    
-    if (!validateEmail(email)) {
-        errors.push('Please enter a valid email address');
-        isValid = false;
-    }
-    
-    if (phone.length < 10) {
-        errors.push('Please enter a valid phone number');
-        isValid = false;
-    }
-    
-    if (message.length < 10) {
-        errors.push('Message must be at least 10 characters long');
-        isValid = false;
-    }
-    
-    if (!isValid) {
-        alert('Please fix the following errors:\n' + errors.join('\n'));
-    }
-    
-    return isValid;
-}
-
-// Price Range Slider (for packages page)
-function initPriceSlider() {
-    const slider = document.getElementById('price-range');
-    const output = document.getElementById('price-output');
-    
-    if (slider && output) {
-        slider.oninput = function() {
-            output.innerHTML = '$' + this.value;
-            filterPackagesByPrice(this.value);
-        };
-    }
-}
-
-function filterPackagesByPrice(maxPrice) {
-    const packages = document.querySelectorAll('.package-card');
-    
-    packages.forEach(package => {
-        const priceText = package.querySelector('.package-price').textContent;
-        const price = parseInt(priceText.replace(/\D/g, ''));
-        
-        if (price <= maxPrice) {
-            package.style.display = 'block';
-        } else {
-            package.style.display = 'none';
-        }
-    });
-}
 
 // Photo Gallery Lightbox Functionality
 let currentImageIndex = 0;
@@ -548,8 +405,7 @@ function initPhotoGallery() {
     }
 }
 
-// Initialize price slider on packages page
+// Initialize photo gallery lightbox
 document.addEventListener('DOMContentLoaded', function() {
-    initPriceSlider();
     initPhotoGallery();
 });

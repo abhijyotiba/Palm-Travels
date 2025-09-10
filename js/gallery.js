@@ -1,7 +1,10 @@
-// Gallery Page Specific JavaScript
+// Gallery Page Specific JavaScript - Zero Version Working
+
+console.log('🎯 Zero Version Gallery.js loaded');
 
 // Initialize gallery functionality when page loads
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Zero Version initializing...');
     initGalleryFilters();
     initMasonryLayout();
     initLoadMore();
@@ -9,11 +12,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Gallery Filter Functionality
 function initGalleryFilters() {
+    console.log('🔧 Initializing gallery filters (Zero Version)');
     const filterButtons = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    console.log(`Found ${filterButtons.length} buttons and ${galleryItems.length} items`);
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
+            console.log(`🔴 Filter clicked: ${button.getAttribute('data-filter')}`);
+            
             // Remove active class from all buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
             // Add active class to clicked button
