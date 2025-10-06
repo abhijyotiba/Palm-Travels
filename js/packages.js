@@ -14,14 +14,22 @@ function applyAllFilters() {
     let visibleCount = 0;
     
     packages.forEach(package => {
-        const packageCategory = package.getAttribute('data-category');
-        const packageDuration = parseInt(package.getAttribute('data-duration'));
-        const packagePrice = parseInt(package.getAttribute('data-price'));
+        const packageCategory = package.getAttribute('data-category') || '';
+        const packageDurationAttr = package.getAttribute('data-duration');
+        const packagePriceAttr = package.getAttribute('data-price');
         
-        // Get package text content for search
-        const title = package.querySelector('h3').textContent.toLowerCase();
-        const description = package.querySelector('p').textContent.toLowerCase();
-        const category = package.querySelector('.package-category').textContent.toLowerCase();
+        // Safely parse numeric values with fallback
+        const packageDuration = packageDurationAttr ? parseInt(packageDurationAttr) : 0;
+        const packagePrice = packagePriceAttr ? parseInt(packagePriceAttr) : 0;
+        
+        // Get package text content for search with null checks
+        const titleElement = package.querySelector('h3');
+        const descriptionElement = package.querySelector('p');
+        const categoryElement = package.querySelector('.package-category');
+        
+        const title = titleElement ? titleElement.textContent.toLowerCase() : '';
+        const description = descriptionElement ? descriptionElement.textContent.toLowerCase() : '';
+        const category = categoryElement ? categoryElement.textContent.toLowerCase() : '';
         const packageText = (title + ' ' + description + ' ' + category).toLowerCase();
         
         let showPackage = true;
@@ -136,35 +144,62 @@ function openPackageDetails(packageId) {
     // In a real application, this would open a detailed page or modal
     
     const packageInfo = {
-        'romantic-paris': {
-            title: 'Romantic Paris Getaway',
-            description: 'Experience the magic of Paris with your loved one. This 7-day romantic package includes luxury accommodations, gourmet dining, and guided tours of iconic landmarks.',
+        'gokarna-spiritual': {
+            title: 'Gokarna Spiritual Retreat',
+            description: 'Serene beaches, ancient temples and laid-back coastal vibes perfect for spiritual rejuvenation and peaceful relaxation.',
             highlights: [
-                'Seine River dinner cruise with live music',
-                'Private Eiffel Tower photoshoot',
-                'Louvre Museum skip-the-line access',
-                'Luxury 5-star hotel in the heart of Paris',
-                'Professional local guide',
-                'Champagne welcome package'
+                'Beach Yoga Sessions at Om Beach',
+                'Ancient Mahabaleshwar Temple Visit',
+                'Kudle Beach and Paradise Beach hopping',
+                'Spiritual meditation sessions',
+                'Local coastal cuisine experience',
+                'Sunset views from Gokarna Beach'
             ],
-            includes: 'Flights, accommodation, breakfast, guided tours, entrance fees',
-            price: '$2,499 per person'
+            includes: 'Accommodation, breakfast, yoga sessions, temple visits, beach transfers',
+            price: '₹15,999 per person'
         },
-        'santorini-romance': {
-            title: 'Santorini Sunset Romance',
-            description: 'Watch breathtaking sunsets in Santorini with your loved one. Perfect for honeymoons and anniversaries.',
+        'udaipur-royal': {
+            title: 'Udaipur Royal Heritage',
+            description: 'City of Lakes with magnificent palaces, royal heritage, and rich culture of Rajasthan perfect for family exploration.',
             highlights: [
-                'Sunset wine tasting tour',
-                'Private beach access',
-                'Couples spa treatment',
-                'Island hopping adventure',
-                'Traditional Greek cooking class',
-                'Romantic dinners with sea views'
+                'City Palace Complex guided tour',
+                'Lake Pichola boat ride with sunset views',
+                'Jagdish Temple and local market visits',
+                'Royal sunset views from palace terraces',
+                'Traditional Rajasthani dinner',
+                'Heritage hotel accommodation'
             ],
-            includes: 'Flights, accommodation, breakfast, sunset tours, spa treatment',
-            price: '$1,899 per person'
+            includes: 'Accommodation, breakfast, palace visits, boat rides, cultural shows',
+            price: '₹17,999 for family of 4'
         },
-        // Add more package details as needed
+        'manali-adventure': {
+            title: 'Manali Mountain Adventure',
+            description: 'Snow-capped mountains, adventure sports and scenic valleys through Solang Valley, Rohtang Pass and pristine nature.',
+            highlights: [
+                'Solang Valley adventure activities',
+                'Rohtang Pass excursion (weather permitting)',
+                'Paragliding and skiing opportunities',
+                'River rafting in Beas River',
+                'Visit to Hadimba Temple',
+                'Local Himachali cuisine experience'
+            ],
+            includes: 'Accommodation, breakfast, adventure activities, local transfers',
+            price: '₹19,999 per person'
+        },
+        'kerala-romance': {
+            title: 'Kerala Backwaters Romance',
+            description: 'Experience romance in God\'s Own Country with houseboat stays, spice plantations, and serene backwaters perfect for couples.',
+            highlights: [
+                'Luxury Houseboat Stay in Alleppey',
+                'Munnar Hill Station with tea gardens',
+                'Spice plantation tours in Thekkady',
+                'Ayurvedic couple spa treatments',
+                'Traditional Kerala cuisine',
+                'Backwater cruises with sunset views'
+            ],
+            includes: 'Accommodation, breakfast, houseboat stay, spa treatments, sightseeing',
+            price: '₹19,999 per couple'
+        }
     };
     
     const info = packageInfo[packageId];

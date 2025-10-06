@@ -1,4 +1,4 @@
-# Palm Travels - Professional Tours & Travels Website
+# Palm Vista - Professional Tours & Travels Website
 
 A modern, responsive website for a Tours and Travels agency built with HTML, CSS, and JavaScript.
 

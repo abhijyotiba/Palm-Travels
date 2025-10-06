@@ -116,8 +116,9 @@ function validateEmail(email) {
 }
 
 function validatePhone(phone) {
-    const re = /^[\+]?[\d\s\-\(\)]{10,}$/;
-    return re.test(phone);
+    // Enhanced phone validation for international numbers
+    const re = /^[\+]?[\d\s\-\(\)]{10,15}$/;
+    return re.test(phone.trim());
 }
 
 function showFieldError(field, message) {

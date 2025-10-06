@@ -3,18 +3,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenu = document.getElementById('mobile-menu');
     const navMenu = document.querySelector('.nav-menu');
 
-    mobileMenu.addEventListener('click', function() {
-        mobileMenu.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            navMenu.classList.remove('active');
+    // Add null checks to prevent errors
+    if (mobileMenu && navMenu) {
+        mobileMenu.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
-    });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
 });
 
 // Hero Background Slider
@@ -156,27 +159,90 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Newsletter Form Submission
-document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = this.querySelector('input[type="email"]').value;
-    
-    if (email) {
-        // Here you would typically send the email to your server
-        alert('Thank you for subscribing! We\'ll keep you updated with the latest travel deals.');
-        this.querySelector('input[type="email"]').value = '';
-    }
-});
+// Newsletter Form Submission - Enhanced with Psychology
+const newsletterForm = document.querySelector('.newsletter-form');
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        const button = this.querySelector('button');
+        
+        if (email) {
+            // Visual feedback
+            button.innerHTML = '<span>Securing Your Deals...</span><i class="fas fa-check"></i>';
+            button.style.background = 'linear-gradient(45deg, #2ed573, #7bed9f)';
+            
+            setTimeout(() => {
+                // Success state
+                button.innerHTML = '<span>Welcome to VIP Club!</span><i class="fas fa-crown"></i>';
+                this.querySelector('input[type="email"]').value = '';
+                
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.innerHTML = `
+                    <div style="background: rgba(46, 213, 115, 0.1); color: #2ed573; padding: 12px; border-radius: 10px; margin-top: 1rem; border: 1px solid rgba(46, 213, 115, 0.3);">
+                        🎉 Success! Check your email for exclusive deals. First-time discount coming your way!
+                    </div>
+                `;
+                this.appendChild(successMessage);
+                
+                // Reset after 3 seconds
+                setTimeout(() => {
+                    button.innerHTML = '<span>Get My Deals</span><i class="fas fa-gift"></i>';
+                    button.style.background = '';
+                    if (successMessage.parentNode) {
+                        successMessage.parentNode.removeChild(successMessage);
+                    }
+                }, 3000);
+                
+                // Track newsletter signup
+                trackEvent('Newsletter Signup', { email: email });
+                
+            }, 1500);
+        }
+    });
+}
 
-// Package Buttons Functionality
+// Package Buttons Functionality - Enhanced for Conversion
 document.querySelectorAll('.package-btn').forEach(button => {
     button.addEventListener('click', function() {
         const packageCard = this.closest('.package-card');
         const packageTitle = packageCard.querySelector('h3').textContent;
+        const packageCategory = packageCard.querySelector('.package-category').textContent;
+        const packagePrice = packageCard.querySelector('.current-price')?.textContent || 
+                           packageCard.querySelector('.package-price').textContent;
         
-        // This would typically redirect to a detailed package page
-        // For now, we'll show an alert
-        alert(`More details about "${packageTitle}" coming soon! Contact us for immediate booking.`);
+        // Create urgency-focused message
+        const urgentMessages = [
+            `Hi! I'm interested in the ${packageTitle} (${packageCategory}) package for ${packagePrice}. I noticed there are limited slots left - can you help me secure my booking today?`,
+            `Hello! I want to book the ${packageTitle} package urgently. Can you confirm availability and help me with immediate booking?`,
+            `Hi! I saw your ${packageTitle} offer and don't want to miss out. Can you help me book this package right away?`
+        ];
+        
+        const randomMessage = urgentMessages[Math.floor(Math.random() * urgentMessages.length)];
+        
+        // Add visual feedback
+        this.style.transform = 'scale(0.95)';
+        this.style.background = '#2ed573';
+        this.innerHTML = '<span>Connecting...</span><i class="fas fa-spinner fa-spin"></i>';
+        
+        setTimeout(() => {
+            openWhatsApp(randomMessage);
+            
+            // Reset button after interaction
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.background = '';
+                this.innerHTML = '<span>Book Now</span><i class="fas fa-lock"></i>';
+            }, 1000);
+        }, 800);
+        
+        // Track conversion intent
+        trackEvent('Package Interest', {
+            package: packageTitle,
+            price: packagePrice,
+            category: packageCategory
+        });
     });
 });
 
@@ -408,4 +474,178 @@ function initPhotoGallery() {
 // Initialize photo gallery lightbox
 document.addEventListener('DOMContentLoaded', function() {
     initPhotoGallery();
+    initPsychologyElements();
 });
+
+// Psychology-driven UI elements
+function initPsychologyElements() {
+    // Show floating CTA after 30 seconds
+    setTimeout(showFloatingCTA, 30000);
+    
+    // Show urgency notifications randomly
+    setInterval(showRandomUrgencyNotification, 45000);
+    
+    // Track user engagement
+    trackUserEngagement();
+    
+    // Initialize social proof counters
+    animateCountersOnScroll();
+}
+
+function showFloatingCTA() {
+    const floatingCTA = document.getElementById('floatingCTA');
+    if (floatingCTA && !localStorage.getItem('cta-dismissed')) {
+        floatingCTA.classList.add('show');
+    }
+}
+
+function closeFloatingCTA() {
+    const floatingCTA = document.getElementById('floatingCTA');
+    if (floatingCTA) {
+        floatingCTA.classList.remove('show');
+        localStorage.setItem('cta-dismissed', 'true');
+        
+        // Show again after 1 hour
+        setTimeout(() => {
+            localStorage.removeItem('cta-dismissed');
+        }, 3600000);
+    }
+}
+
+function showRandomUrgencyNotification() {
+    const notifications = [
+        { text: "Someone just booked Kerala Backwaters package!", time: "2 minutes ago" },
+        { text: "Family from Mumbai booked Rajasthan tour!", time: "5 minutes ago" },
+        { text: "Adventure seeker booked Himachal trek!", time: "8 minutes ago" },
+        { text: "Couple from Delhi confirmed honeymoon package!", time: "12 minutes ago" },
+        { text: "3 bookings in last 30 minutes!", time: "just now" }
+    ];
+    
+    const randomNotification = notifications[Math.floor(Math.random() * notifications.length)];
+    showUrgencyNotification(randomNotification.text, randomNotification.time);
+}
+
+function showUrgencyNotification(text, time) {
+    const urgencyNotification = document.getElementById('urgencyNotification');
+    if (urgencyNotification && !urgencyNotification.classList.contains('show')) {
+        urgencyNotification.querySelector('.urgency-text').textContent = text;
+        urgencyNotification.querySelector('.urgency-time').textContent = time;
+        urgencyNotification.classList.add('show');
+        
+        // Auto hide after 8 seconds
+        setTimeout(() => {
+            urgencyNotification.classList.remove('show');
+        }, 8000);
+    }
+}
+
+function closeUrgencyNotification() {
+    const urgencyNotification = document.getElementById('urgencyNotification');
+    if (urgencyNotification) {
+        urgencyNotification.classList.remove('show');
+    }
+}
+
+function trackUserEngagement() {
+    let scrollDepth = 0;
+    let timeOnPage = 0;
+    let startTime = Date.now();
+    
+    // Track scroll depth
+    window.addEventListener('scroll', () => {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollTop = window.pageYOffset;
+        const trackLength = documentHeight - windowHeight;
+        const pctScrolled = Math.floor(scrollTop / trackLength * 100);
+        
+        if (pctScrolled > scrollDepth) {
+            scrollDepth = pctScrolled;
+            
+            // Show special offers based on engagement
+            if (scrollDepth > 70 && !localStorage.getItem('offer-shown')) {
+                setTimeout(() => {
+                    showSpecialOffer();
+                }, 2000);
+                localStorage.setItem('offer-shown', 'true');
+            }
+        }
+    });
+    
+    // Track time on page
+    setInterval(() => {
+        timeOnPage = Math.floor((Date.now() - startTime) / 1000);
+    }, 1000);
+}
+
+function showSpecialOffer() {
+    // Create and show a special offer modal for engaged users
+    const modal = document.createElement('div');
+    modal.innerHTML = `
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; align-items: center; justify-content: center;">
+            <div style="background: white; padding: 2rem; border-radius: 15px; max-width: 400px; text-align: center; position: relative;">
+                <button onclick="this.parentElement.parentElement.remove()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer;">×</button>
+                <h3 style="color: #D4AF8C; margin-bottom: 1rem;">🎉 Special Offer Just for You!</h3>
+                <p style="margin-bottom: 1.5rem; color: #333;">Since you're exploring our packages, here's an exclusive 15% discount on your first booking!</p>
+                <div style="background: linear-gradient(45deg, #ff4757, #ff6b7a); color: white; padding: 12px; border-radius: 10px; margin-bottom: 1rem; font-weight: bold;">
+                    Use Code: EXPLORER15
+                </div>
+                <button onclick="openWhatsApp('Hi! I saw the EXPLORER15 offer and want to book a package. Can you help?'); this.parentElement.parentElement.remove();" style="background: #25D366; color: white; border: none; padding: 12px 24px; border-radius: 25px; font-weight: 600; cursor: pointer; width: 100%;">
+                    Claim Offer Now!
+                </button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function animateCountersOnScroll() {
+    const counters = document.querySelectorAll('.stat h4');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => observer.observe(counter));
+}
+
+function animateCounter(element) {
+    const target = parseInt(element.textContent.replace(/\D/g, ''));
+    let current = 0;
+    const increment = target / 100;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target.toLocaleString() + '+';
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current).toLocaleString() + '+';
+        }
+    }, 20);
+}
+
+// Enhanced WhatsApp Integration with psychological messaging
+function openWhatsApp(message = 'Hello! I would like to inquire about your travel packages.') {
+    const phoneNumber = '919372495692'; // Replace with actual WhatsApp number
+    const enhancedMessage = `${message}\n\n(Sent from Palm Vista website)`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(enhancedMessage)}`;
+    window.open(url, '_blank');
+    
+    // Track WhatsApp clicks
+    trackEvent('WhatsApp Click', message);
+}
+
+function trackEvent(eventName, eventData) {
+    // Simple analytics tracking
+    if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, {
+            'custom_parameter': eventData
+        });
+    }
+    
+    console.log(`Event: ${eventName}`, eventData);
+}

@@ -26,7 +26,7 @@
 	Created comprehensive README.md with setup instructions and project details.
 
 ## Project Summary
-Professional Tours and Travels website "Palm Travels" successfully created with:
+Professional Tours and Travels website "Palm Vista" successfully created with:
 - Responsive homepage with hero section, destinations, packages, testimonials
 - All Packages page with advanced filtering
 - Contact page with forms and WhatsApp integration  

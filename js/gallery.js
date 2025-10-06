@@ -232,10 +232,11 @@ function initGallerySearch() {
         const galleryItems = document.querySelectorAll('.gallery-item');
         
         galleryItems.forEach(item => {
-            const caption = item.querySelector('.gallery-caption').textContent.toLowerCase();
-            const category = item.getAttribute('data-category').toLowerCase();
+            const captionElement = item.querySelector('.gallery-caption');
+            const caption = captionElement ? captionElement.textContent.toLowerCase() : '';
+            const category = item.getAttribute('data-category') || '';
             
-            if (caption.includes(searchTerm) || category.includes(searchTerm)) {
+            if (caption.includes(searchTerm) || category.toLowerCase().includes(searchTerm)) {
                 showGalleryItem(item);
             } else {
                 hideGalleryItem(item);
