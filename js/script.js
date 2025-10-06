@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileMenu.addEventListener('click', function() {
             mobileMenu.classList.toggle('active');
             navMenu.classList.toggle('active');
+            
+            // Prevent body scroll when mobile menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
         });
 
         // Close mobile menu when clicking on a link
@@ -15,7 +22,17 @@ document.addEventListener('DOMContentLoaded', function() {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
                 navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
             });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenu.contains(event.target) && !navMenu.contains(event.target) && navMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
         });
     }
 });
@@ -150,14 +167,31 @@ function scrollToSection(sectionId) {
 // Navbar Background Change on Scroll
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = 'none';
+    // Look for any hero section on the page
+    const heroSection = document.querySelector('.hero, .about-hero, .packages-hero, .gallery-hero, .contact-hero');
+    
+    if (heroSection && navbar) {
+        const heroHeight = heroSection.offsetHeight;
+        // Add small offset for mobile devices to handle viewport changes
+        const scrollThreshold = window.innerWidth <= 768 ? heroHeight - 50 : heroHeight;
+        
+        if (window.scrollY > scrollThreshold) {
+            // Transparent navbar when scrolled below hero section
+            navbar.classList.add('transparent');
+        } else {
+            // Remove transparent class when in hero section or at top
+            navbar.classList.remove('transparent');
+        }
+    } else if (navbar) {
+        // If no hero section found, apply transparency after scrolling past top
+        const scrollThreshold = window.innerWidth <= 768 ? 80 : 100;
+        if (window.scrollY > scrollThreshold) {
+            navbar.classList.add('transparent');
+        } else {
+            navbar.classList.remove('transparent');
+        }
     }
-});
+}, { passive: true });
 
 // Newsletter Form Submission - Enhanced with Psychology
 const newsletterForm = document.querySelector('.newsletter-form');
@@ -383,6 +417,27 @@ function createBackToTopButton() {
 
 // Initialize back to top button
 document.addEventListener('DOMContentLoaded', createBackToTopButton);
+
+// Handle mobile orientation changes and viewport changes
+window.addEventListener('orientationchange', function() {
+    // Small delay to ensure viewport has updated
+    setTimeout(function() {
+        // Recalculate hero heights for navbar transparency
+        const navbar = document.querySelector('.navbar');
+        const heroSection = document.querySelector('.hero, .about-hero, .packages-hero, .gallery-hero, .contact-hero');
+        
+        if (heroSection && navbar) {
+            const heroHeight = heroSection.offsetHeight;
+            const scrollThreshold = window.innerWidth <= 768 ? heroHeight - 50 : heroHeight;
+            
+            if (window.scrollY > scrollThreshold) {
+                navbar.classList.add('transparent');
+            } else {
+                navbar.classList.remove('transparent');
+            }
+        }
+    }, 100);
+});
 
 // Photo Gallery Lightbox Functionality
 let currentImageIndex = 0;

@@ -80,16 +80,15 @@
 }
 
 .gallery-hero h1 {
-    font-family: 'Prestigious Regular', serif;
-    font-size: 3.5rem;
-    font-weight: 700;
+    font-family: 'Prestigious Regular', 'Playfair Display', serif;
+    font-size: 3.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
     margin-bottom: 1.5rem;
     position: relative;
     z-index: 2;
-    text-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.3),
-        0 4px 8px rgba(0, 0, 0, 0.1);
-    letter-spacing: 2px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     color: #ffffff;
 }
 

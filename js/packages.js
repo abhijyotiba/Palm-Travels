@@ -77,7 +77,28 @@ function applyAllFilters() {
         }
     });
     
+    // Update grid layout based on visible card count
+    updateGridLayout(visibleCount);
     updateResultsCount(visibleCount, packages.length);
+}
+
+// Function to manage grid layout based on number of visible cards
+function updateGridLayout(visibleCount) {
+    const grid = document.querySelector('.packages-grid');
+    if (!grid) return;
+    
+    // Remove all existing layout classes
+    grid.classList.remove('single-card', 'two-cards', 'three-cards');
+    
+    // Add appropriate class based on visible count
+    if (visibleCount === 1) {
+        grid.classList.add('single-card');
+    } else if (visibleCount === 2) {
+        grid.classList.add('two-cards');
+    } else if (visibleCount === 3) {
+        grid.classList.add('three-cards');
+    }
+    // For 4+ cards, use default grid layout (no special class)
 }
 
 // Individual filter functions that update the global state
@@ -219,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize page
     const totalPackages = document.querySelectorAll('.package-card').length;
+    updateGridLayout(totalPackages);
     updateResultsCount(totalPackages, totalPackages);
     
     // Add smooth scrolling to filter section when coming from other pages
