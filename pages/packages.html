@@ -54,6 +54,18 @@
         </div>
     </section>
 
+    <!-- Promotional Banner -->
+    <section class="promo-banner">
+        <div class="container">
+            <div class="promo-content">
+                <div class="promo-icon">🎉</div>
+                <h3>Season Sale - Up to 31% OFF!</h3>
+                <p>Limited time offer! Book now and save thousands on your dream vacation.</p>
+                <div class="promo-timer">⏰ Offer ends October 31st</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Filters Section -->
     <section class="filters-section">
         <div class="container">
@@ -127,8 +139,12 @@
                                 <li>Royal Sunset Views</li>
                             </ul>
                         </div>
-                        <div class="package-price">₹17,999</div>
-                        <button class="package-btn" onclick="openPackageDetails('udaipur-royal')">View Details</button>
+                        <div class="package-price">
+                            <span class="original-price">₹25,999</span>
+                            <span class="current-price">₹17,999</span>
+                            <span class="discount-badge">31% OFF</span>
+                        </div>
+                        <button class="package-btn">Book Now</button>
                     </div>
                 </div>
 
@@ -153,8 +169,12 @@
                                 <li>Ayurvedic Couple Spa</li>
                             </ul>
                         </div>
-                        <div class="package-price">₹19,999</div>
-                        <button class="package-btn" onclick="openPackageDetails('kerala-romance')">View Details</button>
+                        <div class="package-price">
+                            <span class="original-price">₹27,999</span>
+                            <span class="current-price">₹19,999</span>
+                            <span class="discount-badge">29% OFF</span>
+                        </div>
+                        <button class="package-btn">Book Now</button>
                     </div>
                 </div>
 
@@ -179,8 +199,12 @@
                                 <li>River Rafting</li>
                             </ul>
                         </div>
-                        <div class="package-price">₹19,999</div>
-                        <button class="package-btn" onclick="openPackageDetails('manali-adventure')">View Details</button>
+                        <div class="package-price">
+                            <span class="original-price">₹28,999</span>
+                            <span class="current-price">₹19,999</span>
+                            <span class="discount-badge">31% OFF</span>
+                        </div>
+                        <button class="package-btn">Book Now</button>
                     </div>
                 </div>
 
@@ -205,39 +229,17 @@
                                 <li>Spiritual Meditation</li>
                             </ul>
                         </div>
-                        <div class="package-price">₹15,999</div>
-                        <button class="package-btn" onclick="openPackageDetails('gokarna-spiritual')">View Details</button>
+                        <div class="package-price">
+                            <span class="original-price">₹22,999</span>
+                            <span class="current-price">₹15,999</span>
+                            <span class="discount-badge">30% OFF</span>
+                        </div>
+                        <button class="package-btn">Book Now</button>
                     </div>
                 </div>
 
                 <!-- COMING SOON PACKAGES (Descending Price Order) -->
                 
-                <!-- Palace on Wheels Luxury - ₹89,999 -->
-                <div class="package-card" data-category="luxury" data-duration="7" data-price="89999">
-                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=250&fit=crop" alt="Palace on Wheels Luxury">
-                    <div class="package-info">
-                        <div class="package-category">Luxury</div>
-                        <h3>Palace on Wheels Luxury</h3>
-                        <p>Ultimate luxury train journey through Rajasthan's royal cities with five-star accommodation and royal treatment.</p>
-                        <div class="package-features">
-                            <span><i class="fas fa-calendar"></i> 7 Days</span>
-                            <span><i class="fas fa-users"></i> 2 People</span>
-                            <span><i class="fas fa-star"></i> 5 Star</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Rajasthan Circuit</span>
-                        </div>
-                        <div class="package-highlights">
-                            <ul>
-                                <li>Luxury Train Journey</li>
-                                <li>Royal Suite Cabins</li>
-                                <li>Palace Visits</li>
-                                <li>Gourmet Dining</li>
-                            </ul>
-                        </div>
-                        <div class="package-price coming-soon">Coming Soon</div>
-                        <button class="package-btn coming-soon" disabled>Coming Soon</button>
-                    </div>
-                </div>
-
                 <!-- Ladakh Bike Expedition - ₹45,999 -->
                 <div class="package-card" data-category="adventure" data-duration="12" data-price="45999">
                     <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?w=400&h=250&fit=crop" alt="Ladakh Bike Expedition">
@@ -257,32 +259,6 @@
                                 <li>Khardung La Pass</li>
                                 <li>Pangong Tso Lake</li>
                                 <li>Nubra Valley</li>
-                            </ul>
-                        </div>
-                        <div class="package-price coming-soon">Coming Soon</div>
-                        <button class="package-btn coming-soon" disabled>Coming Soon</button>
-                    </div>
-                </div>
-
-                <!-- Golden Triangle Family Tour - ₹39,999 -->
-                <div class="package-card" data-category="family" data-duration="8" data-price="39999">
-                    <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=400&h=250&fit=crop" alt="Golden Triangle Family Tour">
-                    <div class="package-info">
-                        <div class="package-category">Family</div>
-                        <h3>Golden Triangle Family Tour</h3>
-                        <p>Explore India's rich heritage with family through Delhi, Agra, and Jaipur including the magnificent Taj Mahal.</p>
-                        <div class="package-features">
-                            <span><i class="fas fa-calendar"></i> 8 Days</span>
-                            <span><i class="fas fa-users"></i> 4 People</span>
-                            <span><i class="fas fa-star"></i> 4 Star</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Delhi-Agra-Jaipur</span>
-                        </div>
-                        <div class="package-highlights">
-                            <ul>
-                                <li>Taj Mahal Sunrise Visit</li>
-                                <li>Red Fort & India Gate</li>
-                                <li>Amber Palace Jaipur</li>
-                                <li>Cultural Shows</li>
                             </ul>
                         </div>
                         <div class="package-price coming-soon">Coming Soon</div>
@@ -335,32 +311,6 @@
                                 <li>Sunset Cruise</li>
                                 <li>Water Sports</li>
                                 <li>Candlelight Dinners</li>
-                            </ul>
-                        </div>
-                        <div class="package-price coming-soon">Coming Soon</div>
-                        <button class="package-btn coming-soon" disabled>Coming Soon</button>
-                    </div>
-                </div>
-
-                <!-- Backpacker Himachal - ₹8,999 -->
-                <div class="package-card" data-category="budget" data-duration="6" data-price="8999">
-                    <img src="https://images.unsplash.com/photo-1527004760525-a2e7b2c68d89?w=400&h=250&fit=crop" alt="Backpacker Himachal">
-                    <div class="package-info">
-                        <div class="package-category">Budget</div>
-                        <h3>Backpacker Himachal</h3>
-                        <p>Budget-friendly mountain adventure through Himachal Pradesh with hostels, local transport, and authentic experiences.</p>
-                        <div class="package-features">
-                            <span><i class="fas fa-calendar"></i> 6 Days</span>
-                            <span><i class="fas fa-users"></i> 2 People</span>
-                            <span><i class="fas fa-star"></i> 2 Star</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Kasol-Tosh-Malana</span>
-                        </div>
-                        <div class="package-highlights">
-                            <ul>
-                                <li>Backpacker Hostels</li>
-                                <li>Local Bus Travel</li>
-                                <li>Village Walks</li>
-                                <li>Street Food Tours</li>
                             </ul>
                         </div>
                         <div class="package-price coming-soon">Coming Soon</div>
@@ -438,5 +388,6 @@
     <script src="../js/script.js"></script>
     <script src="../js/packages.js"></script>
     <script src="../js/animations.js"></script>
+
 </body>
 </html>

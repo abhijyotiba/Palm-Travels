@@ -138,81 +138,19 @@ function formatPrice(price) {
     return price.toLocaleString('en-IN');
 }
 
-// Package detail modal/redirect functionality
+// WhatsApp integration for package bookings
 function openPackageDetails(packageId) {
-    // For now, we'll show an alert with package info
-    // In a real application, this would open a detailed page or modal
+    // Create WhatsApp message based on package ID
+    const packageName = packageId.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const message = `Hi! I'm interested in the ${packageName} package at the current discounted price. I saw the special offer on your website and don't want to miss out on this amazing deal. Please share more details and help me book this package immediately!`;
     
-    const packageInfo = {
-        'gokarna-spiritual': {
-            title: 'Gokarna Spiritual Retreat',
-            description: 'Serene beaches, ancient temples and laid-back coastal vibes perfect for spiritual rejuvenation and peaceful relaxation.',
-            highlights: [
-                'Beach Yoga Sessions at Om Beach',
-                'Ancient Mahabaleshwar Temple Visit',
-                'Kudle Beach and Paradise Beach hopping',
-                'Spiritual meditation sessions',
-                'Local coastal cuisine experience',
-                'Sunset views from Gokarna Beach'
-            ],
-            includes: 'Accommodation, breakfast, yoga sessions, temple visits, beach transfers',
-            price: '₹15,999 per person'
-        },
-        'udaipur-royal': {
-            title: 'Udaipur Royal Heritage',
-            description: 'City of Lakes with magnificent palaces, royal heritage, and rich culture of Rajasthan perfect for family exploration.',
-            highlights: [
-                'City Palace Complex guided tour',
-                'Lake Pichola boat ride with sunset views',
-                'Jagdish Temple and local market visits',
-                'Royal sunset views from palace terraces',
-                'Traditional Rajasthani dinner',
-                'Heritage hotel accommodation'
-            ],
-            includes: 'Accommodation, breakfast, palace visits, boat rides, cultural shows',
-            price: '₹17,999 for family of 4'
-        },
-        'manali-adventure': {
-            title: 'Manali Mountain Adventure',
-            description: 'Snow-capped mountains, adventure sports and scenic valleys through Solang Valley, Rohtang Pass and pristine nature.',
-            highlights: [
-                'Solang Valley adventure activities',
-                'Rohtang Pass excursion (weather permitting)',
-                'Paragliding and skiing opportunities',
-                'River rafting in Beas River',
-                'Visit to Hadimba Temple',
-                'Local Himachali cuisine experience'
-            ],
-            includes: 'Accommodation, breakfast, adventure activities, local transfers',
-            price: '₹19,999 per person'
-        },
-        'kerala-romance': {
-            title: 'Kerala Backwaters Romance',
-            description: 'Experience romance in God\'s Own Country with houseboat stays, spice plantations, and serene backwaters perfect for couples.',
-            highlights: [
-                'Luxury Houseboat Stay in Alleppey',
-                'Munnar Hill Station with tea gardens',
-                'Spice plantation tours in Thekkady',
-                'Ayurvedic couple spa treatments',
-                'Traditional Kerala cuisine',
-                'Backwater cruises with sunset views'
-            ],
-            includes: 'Accommodation, breakfast, houseboat stay, spa treatments, sightseeing',
-            price: '₹19,999 per couple'
-        }
-    };
-    
-    const info = packageInfo[packageId];
-    if (info) {
-        let message = `${info.title}\n\n${info.description}\n\nHighlights:\n`;
-        info.highlights.forEach(highlight => {
-            message += `• ${highlight}\n`;
-        });
-        message += `\nIncludes: ${info.includes}\nPrice: ${info.price}\n\nContact us to book this amazing package!`;
-        
-        alert(message);
+    if (typeof openWhatsApp === 'function') {
+        openWhatsApp(message);
     } else {
-        alert('Package details coming soon! Contact us for more information and booking.');
+        // Fallback WhatsApp integration
+        const phoneNumber = '919372495692';
+        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
     }
 }
 

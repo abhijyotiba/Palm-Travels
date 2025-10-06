@@ -212,11 +212,16 @@ document.querySelectorAll('.package-btn').forEach(button => {
         const packagePrice = packageCard.querySelector('.current-price')?.textContent || 
                            packageCard.querySelector('.package-price').textContent;
         
-        // Create urgency-focused message
+        // Create urgency-focused message with discount info
+        const originalPriceElement = packageCard.querySelector('.original-price');
+        const discountBadge = packageCard.querySelector('.discount-badge');
+        const discountInfo = originalPriceElement && discountBadge ? 
+            ` (${discountBadge.textContent} discount from ${originalPriceElement.textContent})` : '';
+        
         const urgentMessages = [
-            `Hi! I'm interested in the ${packageTitle} (${packageCategory}) package for ${packagePrice}. I noticed there are limited slots left - can you help me secure my booking today?`,
-            `Hello! I want to book the ${packageTitle} package urgently. Can you confirm availability and help me with immediate booking?`,
-            `Hi! I saw your ${packageTitle} offer and don't want to miss out. Can you help me book this package right away?`
+            `Hi! I'm interested in the ${packageTitle} (${packageCategory}) package for ${packagePrice}${discountInfo}. I noticed there are limited slots left at this discounted price - can you help me secure my booking today?`,
+            `Hello! I want to book the ${packageTitle} package urgently at the current discounted rate of ${packagePrice}${discountInfo}. Can you confirm availability and help me with immediate booking?`,
+            `Hi! I saw your ${packageTitle} discount offer${discountInfo} and don't want to miss out on this amazing deal. Can you help me book this package right away?`
         ];
         
         const randomMessage = urgentMessages[Math.floor(Math.random() * urgentMessages.length)];
@@ -318,9 +323,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // WhatsApp Integration (for later use in contact page)
 function openWhatsApp(message = 'Hello! I would like to inquire about your travel packages.') {
-    const phoneNumber = '1234567890'; // Replace with actual WhatsApp number
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const phoneNumber = '919372495692'; // Updated to correct WhatsApp number
+    const enhancedMessage = `${message}\n\n(Sent from Palm Vista website)`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(enhancedMessage)}`;
     window.open(url, '_blank');
+    
+    // Track WhatsApp clicks
+    trackEvent('WhatsApp Click', message);
 }
 
 // Form Validation Helper
@@ -487,9 +496,6 @@ function initPsychologyElements() {
     
     // Track user engagement
     trackUserEngagement();
-    
-    // Initialize social proof counters
-    animateCountersOnScroll();
 }
 
 function showFloatingCTA() {
@@ -599,45 +605,11 @@ function showSpecialOffer() {
     document.body.appendChild(modal);
 }
 
-function animateCountersOnScroll() {
-    const counters = document.querySelectorAll('.stat h4');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    counters.forEach(counter => observer.observe(counter));
-}
 
-function animateCounter(element) {
-    const target = parseInt(element.textContent.replace(/\D/g, ''));
-    let current = 0;
-    const increment = target / 100;
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target.toLocaleString() + '+';
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current).toLocaleString() + '+';
-        }
-    }, 20);
-}
 
-// Enhanced WhatsApp Integration with psychological messaging
-function openWhatsApp(message = 'Hello! I would like to inquire about your travel packages.') {
-    const phoneNumber = '919372495692'; // Replace with actual WhatsApp number
-    const enhancedMessage = `${message}\n\n(Sent from Palm Vista website)`;
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(enhancedMessage)}`;
-    window.open(url, '_blank');
-    
-    // Track WhatsApp clicks
-    trackEvent('WhatsApp Click', message);
-}
+
+
+
 
 function trackEvent(eventName, eventData) {
     // Simple analytics tracking
